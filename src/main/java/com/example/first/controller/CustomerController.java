@@ -55,12 +55,12 @@ public class CustomerController {
 		paramCustomer.setCustomerMail(loginId);
 		paramCustomer.setCustomerPw(password);
 		
-		Customer customer = customerService.login(paramCustomer);
-		if (customer == null) {
+		Customer customerMail = customerService.login(paramCustomer);
+		if (customerMail == null) {
 			model.addAttribute("msg","로그인실패");
 			return "customer/login";
 		}
-		session.setAttribute("customer", customer);
+		session.setAttribute("customerMail", customerMail);
 		
 		
 		return "customer/home";
