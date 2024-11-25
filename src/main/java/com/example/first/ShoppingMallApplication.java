@@ -16,11 +16,13 @@ public class ShoppingMallApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		SpringApplication.run(ShoppingMallApplication.class, args);
 	}
-	
-//	public void addInterceptors(InterceptorRegistry registry) {
-//		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**");
-//		registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
-//		WebMvcConfigurer.super.addInterceptors(registry);
-//	}
+
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**")
+				.excludePathPatterns("/customer/login").excludePathPatterns("/customer/home")
+				.excludePathPatterns("/customer/register");
+		registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
+		WebMvcConfigurer.super.addInterceptors(registry);
+	}
 
 }

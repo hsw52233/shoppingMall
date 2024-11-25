@@ -24,28 +24,28 @@ public class CustomerController {
 	@Autowired CustomerService customerService;
 	
 	// customer/register(회원가입)
-	@GetMapping("/register")
+	@GetMapping("/customer/register")
 	public String registerAddCustomer() {
-		return "register";
+		return "customer/register";
 	}
 	
-	@PostMapping("/register")
+	@PostMapping("/customer/register")
 	public String register() {
-		return "register";
+		return "customer/register";
 	}
 	
 	// customer/home (메인페이지)	
-	@GetMapping("/home")
+	@GetMapping("/customer/home")
 	public String home() {
-		return "home";
+		return "customer/home";
 	}
 	// customer/login (로그인페이지)	
-	@GetMapping("/login")
+	@GetMapping("/customer/login")
 	public String login() {
-		return "login";
+		return "customer/login";
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/customer/login")
 	public String login(Model model
 			, HttpSession session
 			, @RequestParam(name = "loginId") String loginId
@@ -58,12 +58,12 @@ public class CustomerController {
 		Customer customer = customerService.login(paramCustomer);
 		if (customer == null) {
 			model.addAttribute("msg","로그인실패");
-			return "/login";
+			return "customer/login";
 		}
 		session.setAttribute("customer", customer);
 		
 		
-		return "/home";
+		return "customer/home";
 	}
 	
 	@GetMapping("/customer/customerOne")

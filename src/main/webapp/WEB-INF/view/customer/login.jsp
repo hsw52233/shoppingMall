@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="form" method="post" action="${pageContext.request.contextPath}/login">
+	<form id="form" method="post" action="${pageContext.request.contextPath}/customer/login">
 		<h1>customerLogin</h1>
 		<hr>
 		<small>${msg}</small>
@@ -22,7 +22,7 @@
 		<label for="password"> password </label>
 			<input id="password" type="password" name="password" placeholder="Password" >
 		</div>
-		<button id="btn" type="submit">로그인</button>
+		<button id="btn" type="button">로그인</button>
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/customer/register">회원가입</a></li>
 			<li><a href="#">이메일/비밀번호찾기</a></li>
