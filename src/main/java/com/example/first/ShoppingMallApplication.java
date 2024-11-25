@@ -17,10 +17,10 @@ public class ShoppingMallApplication implements WebMvcConfigurer {
 		SpringApplication.run(ShoppingMallApplication.class, args);
 	}
 	
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**");
-		registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
-		WebMvcConfigurer.super.addInterceptors(registry);
-	}
+//	public void addInterceptors(InterceptorRegistry registry) {
+//		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**");
+//		registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
+//		WebMvcConfigurer.super.addInterceptors(registry);
+//	}
 
 }
