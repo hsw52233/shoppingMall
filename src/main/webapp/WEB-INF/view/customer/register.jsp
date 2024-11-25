@@ -10,6 +10,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>Register</h1>
+	<form action="">
+		<form action="">
+			<button></button>
+			<div><input type="text" /></div>
+			<div><input type="password" /></div>
+			<div><input type="radio"></div>
+		</form>
+	</form>
 </body>
 </html>

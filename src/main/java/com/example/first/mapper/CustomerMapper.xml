@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.CustomerMapper">
-<!-- customer -->
-	<select id="selectCustomerOne" resultType="Map" parameterType="String">
-		select 
-			c.customer_mail customerMail,
-			c.customer_birth customerBirth,
-		    c.customer_gender customerGender,
-		    a.address_detail addressDetail
+
+	<select id="login" parameterType="com.example.first.vo.Customer"
+		resultType="com.example.first.vo.Customer">
+		SELECT
+		customer_mail customerMail
+		FROM customer
+		WHERE customer_mail = #{customerMail} AND
+		customer_pw = #{customerPw}
+	</select>
+	
+	<!-- customer -->
+	<select id="selectCustomerOne" resultType="Map"
+		parameterType="String">
+		select
+		c.customer_mail customerMail,
+		c.customer_birth customerBirth,
+		c.customer_gender customerGender,
+		a.address_detail addressDetail
 		from customer c inner join address a
-		on c.customer_mail = a.customer_mail
+		on c.customer_mail =
+		a.customer_mail
 		where c.customer_mail = #{customerMail}
+
 	</select>
 </mapper>
