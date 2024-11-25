@@ -93,7 +93,12 @@
 			<version>3.0.3</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>sakila</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+</dependencies>
 
 	<build>
 		<plugins>
