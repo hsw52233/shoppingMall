@@ -21,9 +21,11 @@ public class CustomerController {
 	@GetMapping("/customer/customerOne")
 	public String customerOne(Model model,@RequestParam String customerMail) {
 		
-		Map<String, Object> cutomer = customerService.getCutomerOne(customerMail);
-		log.debug("customer : "+cutomer);
-		model.addAttribute("cutomer",cutomer);
+		log.debug("customerMail : "+customerMail);
+		Map<String, Object> customer = customerService.getCutomerOne(customerMail);
+		log.debug("customer : "+customer);
+		model.addAttribute("customer",customer);
+		model.addAttribute("customerMail",customerMail);
 		
 		return "customer/customerOne";
 	}
