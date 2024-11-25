@@ -18,9 +18,9 @@ public class CustomerInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		
 		// 고객 확인
-		if(session.getAttribute("customer") == null) {
+		if(session.getAttribute("customerMail") == null) {
 			log.debug("고객 로그인 실패 - 리다이렉트");
-			response.sendRedirect(request.getContextPath()+"/customer/main");
+			response.sendRedirect(request.getContextPath()+"/common/home");
 			return false;
 		}
 		

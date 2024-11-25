@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="form" method="post" action="${pageContext.request.contextPath}/customer/login">
+	<form id="form" method="post" action="${pageContext.request.contextPath}/common/login">
 		<h1>customerLogin</h1>
 		<hr>
 		<small>${msg}</small>

@@ -18,10 +18,8 @@ public class ShoppingMallApplication implements WebMvcConfigurer {
 	}
 
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**")
-				.excludePathPatterns("/customer/login").excludePathPatterns("/customer/home")
-				.excludePathPatterns("/customer/register");
-		registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
+		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**");
+		//registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 
