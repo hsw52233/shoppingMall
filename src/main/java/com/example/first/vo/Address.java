@@ -9,5 +9,4 @@ public class Address {
 	private String addressDetail;
 	private String updateDate;
 	private String createDate;
-	private String hsw;
 }
