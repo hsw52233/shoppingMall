@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>Home</h1>
-	
+${customerMail}	
 
 </body>
 </html>
