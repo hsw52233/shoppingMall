@@ -26,8 +26,11 @@ public class CustomerService {
 	}
 
 	public Map<String, Object> getCutomerOne(String customerMail) {
-
 		return customerMapper.selectCustomerOne(customerMail);
+	}
+
+	public int getModifyCustomer(Customer customer) {
+		return customerMapper.updateCustomer(customer);
 	}
 
 }

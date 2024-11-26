@@ -34,13 +34,18 @@
 	
 </style>
 <body>
+
 <div class="fakeHeader">
-	
-	<h1>Home</h1>
-	<div class="fakeLogout">
+
+<h1>Home</h1>
+<div>
+	<a href="">로그아웃</a>
+	<a href="${pageContext.request.contextPath}/customer/customerOne">마이페이지</a>
+	<a href="${pageContext.request.contextPath}/common/login">로그인</a>
+</div>
+  <div class="fakeLogout">
 		<a href="${pageContext.request.contextPath}/common/logout">로그아웃</a>
 	</div>
-</div>
 <div class="fakeContainer">
 	<div class="fakeBanner"><a href="#">쇼핑몰 배너</a></div>
 	<div class="fakeContentBox">

@@ -10,9 +10,10 @@
 <title>정보 수정</title>
 </head>
 <body>
-	<h2>${customer.customerMail}정보 수정</h2>
+	<h2>${customerMail}님 정보 수정</h2>
+	<div>${msg}</div>
 	<form id="formModifyPassword" action="${pageContext.request.contextPath}/customer/modifyCustomer" method="post">
-		<input type="hidden" name = "customerMail" value="${customer.customerMail}">
+		<input type="hidden" name = "customerMail" value="${customerMail}">
 		<table>
 			<tr>
 				<td>비밀번호 변경</td>
