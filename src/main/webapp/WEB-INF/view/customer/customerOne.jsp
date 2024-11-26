@@ -58,7 +58,7 @@
                             <a class="nav-link active" href="${pageContext.request.contextPath}/customer/customerOne">회원 정보</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/addressList">배송지 목록</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/addressList?customerMail=${customerMail}">배송지 목록</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/customer/ordersList">주문 내역</a>
