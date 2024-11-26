@@ -11,7 +11,7 @@
 <body>
 
 	<div>
-			<form id="form" action="${pageContext.request.contextPath}/staffLogin" method="post">
+			<form id="form" action="${pageContext.request.contextPath}/staff/login" method="post">
 				<div>아이디:   <input type="text" name="staffId"></div>
 				<div>비밀번호:   <input type="password" name="password"></div>
 				

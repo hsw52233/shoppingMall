@@ -15,6 +15,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>로그인 성공</h1>
+	<a href="${pageContext.request.contextPath}/staff/profile"></a>
 </body>
 </html>
