@@ -19,12 +19,12 @@
 			<input id="loginId" type="text" name="loginId" placeholder="ID">
 		</div>
 		<div>
-		<label for="password"> password </label>
+			<label for="password"> password </label>
 			<input id="password" type="password" name="password" placeholder="Password" >
 		</div>
 		<button id="btn" type="button">로그인</button>
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/customer/register">회원가입</a></li>
+			<li><a href="${pageContext.request.contextPath}/common/register">회원가입</a></li>
 			<li><a href="#">이메일/비밀번호찾기</a></li>
 		</ul>
 	</form>
