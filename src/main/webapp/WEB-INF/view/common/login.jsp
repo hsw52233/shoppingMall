@@ -51,7 +51,7 @@ $('#btn').click(function(){ // 버튼클릭 시 가동
 	} else {
 		$('#form').submit();
 	}
-	
+
 });
 </script>
 </html>
