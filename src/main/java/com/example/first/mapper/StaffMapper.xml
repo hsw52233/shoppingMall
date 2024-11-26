@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.first.mapper.StaffMapper"></mapper>
+<mapper namespace="com.example.first.mapper.StaffMapper">
+
+
+	<select id="login" parameterType="com.example.first.vo.Staff"
+					resultType="com.example.first.vo.Staff">
+	
+		SELECT
+			staff_id staffId,
+			staff_pw staffPw
+		FROM staff
+		WHERE staff_id= #{staffId} AND staff_pw = #{staffPw}
+	
+	</select>
+</mapper>
