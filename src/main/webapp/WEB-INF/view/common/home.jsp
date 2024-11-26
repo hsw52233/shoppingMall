@@ -11,5 +11,8 @@
 </head>
 <body>
 <h1>Home</h1>
+<div>
+	<a href="">로그아웃</a>
+</div>
 </body>
 </html>
