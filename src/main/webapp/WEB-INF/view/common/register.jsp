@@ -48,15 +48,15 @@
 // registerForm 유효성검사
 $('#btn').click(function(){
 	console.log('클릭 로그');
-	if(($('#loginId').val()) == false){ // 이메일 입력값검사
+	if(($('#loginId').val()) == ""){ // 이메일 입력값검사
 		alert("E-mail을 입력해주세요."); 
-	}else if(($('#password').val()) == false){ // 패스워드 입력값검사
+	}else if(($('#password').val()) == ""){ // 패스워드 입력값검사
 		alert("패스워드를 입력해주세요.");
 	}else if(($('#password').val().length <= 3)){ // 패스워드 입력값검사
 		alert("패스워드는 4글자이상 입력해주세요.");
 	}else if($('#gender').checked != false){ // 성별 입력값검사
 		alert("성별을 체크해주세요.");
-	}else if(($('#birth').val()) == false){ // 생일 입력값검사
+	}else if(($('#birth').val()) == ""){ // 생일 입력값검사
 		alert("생일을 입력해주세요.");
 	}else{ // 만약 위 조건들이 문제없이 실행되었을 때, submit을 통해 입력받은 정보들을 customerController로 전송
 		$('#form').submit();

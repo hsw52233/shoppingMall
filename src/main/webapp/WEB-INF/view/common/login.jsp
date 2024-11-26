@@ -30,7 +30,7 @@
 				<a href="${pageContext.request.contextPath}/common/register">회원가입</a>
 			</li>
 			<li>
-				<a href="${pageContext.request.contextPath}/common/register">이메일찾기</a>
+				<a href="${pageContext.request.contextPath}/common/findId">이메일찾기</a>
 			</li>
 			<li>
 				<a href="#">비밀번호찾기</a>
