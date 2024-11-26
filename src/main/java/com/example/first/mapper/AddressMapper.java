@@ -5,7 +5,11 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.first.vo.Address;
+
 @Mapper
 public interface AddressMapper {
 	List<Map<String,Object>> selectAddressList(String customerMail);
+	
+	int insertAddAddress(Address address);
 }

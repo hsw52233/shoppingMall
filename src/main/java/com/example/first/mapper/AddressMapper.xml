@@ -6,5 +6,16 @@
 			address_no addressNo,
 			address_detail addressDetail
 		from address
+		where customer_mail=#{customerMail}
 	</select>
+	
+	<insert id="insertAddAddress" parameterType="com.example.first.vo.Address">
+		insert into address(
+			 customer_mail,
+			 address_detail
+			 )values(
+			 #{customerMail},
+			 #{addressDetail}
+			 )
+	</insert>
 </mapper>

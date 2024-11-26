@@ -94,16 +94,21 @@ public class CustomerController {
 		model.addAttribute("customerMail", customerMail);
 		return "customer/customerOne";
 	}
-
+	
+	// 비밀번호 변경
 	@GetMapping("/customer/modifyCustomer")
 	public String modifyCustomer(Model model, @RequestParam String customerMail) {
 		model.addAttribute("customerMail", customerMail);
 		return "customer/modifyCustomer";
 	}
-
+	
+	// 비밀번호 변경
 	@PostMapping("/customer/modifyCustomer")
 	public String modifyCustomer(@RequestParam String customerMail, @RequestParam String pw, @RequestParam String rePw, Model model) {
-		if(pw.equals(rePw)) {
+		if(!pw.equals(rePw)) {
+	        model.addAttribute("msg", "새 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+	        return "customer/customerModify";  // 수정 폼으로 돌아가기
+	    } else {
 			 Customer customer = new Customer();
 			    customer.setCustomerMail(customerMail);
 			    customer.setCustomerPw(pw);
@@ -112,10 +117,10 @@ public class CustomerController {
 				log.debug("비밀번호 변경 성공");
 			} else {
 				log.debug("변경 실패");
+				return "customer/customerOne";
 			}
 		}
 		return "redirect:/customer/customerOne?customerMail="+customerMail;
-
 	}
 
 }
