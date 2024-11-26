@@ -58,6 +58,9 @@
                             <a class="nav-link active" href="${pageContext.request.contextPath}/customer/customerOne">회원 정보</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/addressList">배송지 목록</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/customer/ordersList">주문 내역</a>
                         </li>
                         <li class="nav-item">
@@ -82,7 +85,7 @@
                                 <strong>이메일:</strong> ${customer.customerMail} <br>
                                 <strong>주소:</strong> ${customer.addressDetail}
                             </p>
-                            <a href="${pageContext.request.contextPath}/customer/CustomerUpdate" class="btn btn-primary">정보 수정</a>
+                            <a href="${pageContext.request.contextPath}/customer/modifyCustomer" class="btn btn-primary">정보 수정</a>
                         </div>
                     </div>
                 </div>
