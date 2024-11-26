@@ -27,17 +27,17 @@ public class StaffController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		log.debug("로그아웃");
-		return "redirect:/staff/login";
+		return "redirect:staff/login";
 	}
 	
-	@GetMapping("/staffLogin")
+	@GetMapping("/staff/login")
 	public String staffLogin() {
 		
 		
-		return "/staff/login";
+		return "staff/login";
 	}
 	
-	@PostMapping("/staffLogin")
+	@PostMapping("/staff/login")
 	public String staffLogin(Model model, HttpSession session,
 				@RequestParam(name = "staffId") String staffId
 				,@RequestParam(name = "password") String password) {
@@ -56,7 +56,7 @@ public class StaffController {
 		
 		if(loginStaff == null) {
 			System.out.println("실패");
-			return "/staff/login";
+			return "staff/login";
 		}
 		session.setAttribute("loginStaff", loginStaff);
 		System.out.println("로그인성공");
@@ -64,7 +64,7 @@ public class StaffController {
 		
 		
 		
-		return "/staffMain";
+		return "staff/staffMain";
 	}
 	
 	
