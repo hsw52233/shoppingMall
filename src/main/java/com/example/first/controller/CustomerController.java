@@ -23,22 +23,39 @@ public class CustomerController {
 
 	@Autowired CustomerService customerService;
 	
+	
+	
 	// customer/register(회원가입)
 	@GetMapping("/common/register")
-	public String registerAddCustomer() {
-		return "customer/register";
-	}
-	
-	@PostMapping("/common/register")
 	public String register() {
-		return "customer/register";
+		return "common/register";
+	}
+	// customer/register(회원가입)
+	@PostMapping("/common/register")
+	public String registerAddCustomer(@RequestParam String loginId
+			, @RequestParam String loginAddress
+            , @RequestParam String password
+            , @RequestParam String gender
+            , @RequestParam String birth) {
+		
+		// 1. customer타입을 만들어서 requestparam으로 받은 값들을 넣어준다
+		
+		Customer registerCustomer = new Customer();
+		registerCustomer.setCustomerMail(loginId+loginAddress);
+		registerCustomer.setCustomerPw(password);
+		registerCustomer.setCustomerGender(gender);
+		registerCustomer.setCustomerBirth(birth);
+		
+		// 2. customerService/addCustomer를 호출해준다
+		customerService.addCustomer(registerCustomer);
+		
+		
+		
+		return "common/login";
 	}
 	
 	// customer/home (메인페이지)	
-	@GetMapping("/common/home")
-	public String home() {
-		return "common/home";
-	}
+
 	// customer/login (로그인페이지)	
 	@GetMapping("/common/login")
 	public String login() {
@@ -66,6 +83,8 @@ public class CustomerController {
 		return "common/home";
 	}
 	
+
+	// customer/customerOne (마이페이지)
 	@GetMapping("/customer/customerOne")
 	public String customerOne(Model model,@RequestParam String customerMail) {
 		

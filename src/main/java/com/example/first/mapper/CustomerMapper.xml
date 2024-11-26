@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.CustomerMapper">
+	
+	
+	<!-- /common/register -->
+	<select id="insertCustomer" parameterType="com.example.first.vo.Customer">
+		INSERT INTO customer(
+			customer_mail, customer_pw, customer_birth, customer_gender
+			) VALUES (
+			#{customerMail}, #{customerPw}, #{customerBirth},#{customerGender}
+			)
 
+	</select>
+	
+	
+	<!-- /common/login -->
 	<select id="login" parameterType="com.example.first.vo.Customer"
 		resultType="com.example.first.vo.Customer">
 		SELECT
