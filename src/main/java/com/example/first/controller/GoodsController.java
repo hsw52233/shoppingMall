@@ -9,6 +9,9 @@ import com.example.first.service.GoodsService;
 
 @Controller
 public class GoodsController {
+	
+	
+	
 
 	@Autowired
 	private GoodsService goodsService;
