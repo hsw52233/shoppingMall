@@ -23,6 +23,15 @@ public class CustomerController {
 
 	@Autowired CustomerService customerService;
 	
+	// customer/log(로그아웃)
+	@GetMapping("/common/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // 현재 세션정보를 종료시킴으로써 로그아웃처리시킴
+		log.debug("로그아웃 성공");
+		
+		return "redirect:/common/login"; // 로그아웃했으니 다시 로그인페이지로 리다이렉트
+	}
+	
 	
 	
 	// customer/register(회원가입)

@@ -10,10 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- form에서 입력받은 정보들은 common/login로 보내지게끔 경로를 설정함 / post방식으로 진행  -->
 	<form id="form" method="post" action="${pageContext.request.contextPath}/common/login">
 		<h1>customerLogin</h1>
 		<hr>
 		<small>${msg}</small>
+		<!-- controller에서 msg라는 공간을 만들어서 경고메세지 출력 -->
 		<div>
 			<label for="loginId"> ID </label>
 			<input id="loginId" type="text" name="loginId" placeholder="ID">
@@ -24,22 +26,32 @@
 		</div>
 		<button id="btn" type="button">로그인</button>
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/common/register">회원가입</a></li>
-			<li><a href="#">이메일/비밀번호찾기</a></li>
+			<li>
+				<a href="${pageContext.request.contextPath}/common/register">회원가입</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath}/common/register">이메일찾기</a>
+			</li>
+			<li>
+				<a href="#">비밀번호찾기</a>
+			</li>
 		</ul>
 	</form>
 	
 </body>
 <script>
-$('#btn').click(function(){
-	console.log('클릭 로그');
-	if($('#loginId').val() == ""){
+$('#btn').click(function(){ // 버튼클릭 시 가동
+	console.log('클릭 로그'); // 디버깅
+	if($('#loginId').val() == ""){ // 만약 loginId값이 비어있다면
 		alert('ID를 입력해주세요.');
-	} else if ($('#password').val().length < 4){
+	} else if ($('#password').val() == ""){ // 만약 password값이 비어있다면
+		alert('password를 입력해주세요.');
+	} else if ($('#password').val().length <= 4){ // 만약 password값이 4자릿수 이하라면
 		alert('password는 4글자 이상 입력하셔야합니다.');
-	}else {
+	} else {
 		$('#form').submit();
 	}
-})
+
+});
 </script>
 </html>

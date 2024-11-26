@@ -12,7 +12,11 @@
 			)
 
 	</select>
-	
+	<!-- 
+	INSERT INTO customer = customer라는 db안에 집어넣음
+	(customer_mail, customer_pw, customer_birth, customer_gender) = customer라는 db안에 넣을 column 
+		VALUES (#{},#{},#{},#{}) = 외부에서 입력받는 정보들 이 경우엔 CustomerMapper.java로 받은 정보(registerCustomer)가 들어감
+	 -->
 	
 	<!-- /common/login -->
 	<select id="login" parameterType="com.example.first.vo.Customer"
