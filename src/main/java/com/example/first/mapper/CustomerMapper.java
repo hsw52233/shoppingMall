@@ -16,4 +16,6 @@ public interface CustomerMapper {
 
 	Map<String, Object> selectCustomerOne(String customerMail);
 
+	int updateCustomer(Customer Customer);
+
 }

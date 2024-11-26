@@ -13,6 +13,8 @@
 <h1>Home</h1>
 <div>
 	<a href="">로그아웃</a>
+	<a href="${pageContext.request.contextPath}/customer/customerOne">마이페이지</a>
+	<a href="${pageContext.request.contextPath}/common/login">로그인</a>
 </div>
 </body>
 </html>

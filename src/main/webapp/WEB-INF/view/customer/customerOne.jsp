@@ -83,9 +83,8 @@
                             <h5 class="card-title">[${customerMail}]님의 정보</h5>
                             <p class="card-text">
                                 <strong>이메일:</strong> ${customer.customerMail} <br>
-                                <strong>주소:</strong> ${customer.addressDetail}
                             </p>
-                            <a href="${pageContext.request.contextPath}/customer/modifyCustomer" class="btn btn-primary">정보 수정</a>
+                            <a href="${pageContext.request.contextPath}/customer/modifyCustomer?customerMail=${customerMail}" class="btn btn-primary">정보 수정</a>
                         </div>
                     </div>
                 </div>
