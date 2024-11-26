@@ -1,3 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.first.mapper.CustomerMapper"></mapper>
+<mapper namespace="com.example.first.mapper.CustomerMapper">
+	
+	
+	<!-- /common/register -->
+	<select id="insertCustomer" parameterType="com.example.first.vo.Customer">
+		INSERT INTO customer(
+			customer_mail, customer_pw, customer_birth, customer_gender
+			) VALUES (
+			#{customerMail}, #{customerPw}, #{customerBirth},#{customerGender}
+			)
+
+	</select>
+	<!-- 
+	INSERT INTO customer = customer라는 db안에 집어넣음
+	(customer_mail, customer_pw, customer_birth, customer_gender) = customer라는 db안에 넣을 column 
+		VALUES (#{},#{},#{},#{}) = 외부에서 입력받는 정보들 이 경우엔 CustomerMapper.java로 받은 정보(registerCustomer)가 들어감
+	 -->
+	
+	<!-- /common/login -->
+	<select id="login" parameterType="com.example.first.vo.Customer"
+		resultType="com.example.first.vo.Customer">
+		SELECT
+		customer_mail customerMail
+		FROM customer
+		WHERE customer_mail = #{customerMail} AND
+		customer_pw = #{customerPw}
+	</select>
+	
+	<!-- customer -->
+	<select id="selectCustomerOne" resultType="Map"
+		parameterType="String">
+		select
+		customer_mail customerMail,
+		customer_pw customerPw,
+		customer_birth customerBirth,
+		customer_gender customerGender
+		from customer
+		where customer_mail = #{customerMail}
+	</select>
+	
+	<!-- customerUpdate -->
+	<update id="updateCustomer" parameterType="com.example.first.vo.Customer">
+		update customer
+		set customer_pw =#{customerPw}
+		where customer_mail = #{customerMail}
+	</update>
+</mapper>
