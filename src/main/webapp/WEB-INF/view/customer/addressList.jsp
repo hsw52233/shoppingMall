@@ -13,5 +13,6 @@
 <body>
 <h1>addressList</h1>
 ${addressList}
+<a href="${pageContext.request.contextPath}/customer/addAddress?customerMail=${customerMail}">배송지 추가</a>
 </body>
 </html>
