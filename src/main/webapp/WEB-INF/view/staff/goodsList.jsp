@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<a href="${pageContext.request.contextPath}/staff/goodsAdd">상품 추가</a>
+	<a href="${pageContext.request.contextPath}/staff/goodsModify">상품 수정</a>
 </body>
 </html>

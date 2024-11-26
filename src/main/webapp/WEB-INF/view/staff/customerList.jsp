@@ -10,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<a href="${pageContext.request.contextPath}/staff/customerOne">회원 상세</a>
 </body>
 </html>
