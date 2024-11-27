@@ -27,17 +27,10 @@
 					<td>customerGender</td>
 					<td>updateDate</td>
 					<td>createDate</td>
-					<td>회원 수정</td>
-					<td>회원 삭제</td>
-				
-			
-						
-						
-					
-					
+					<td>회원 삭제</td>				
 					
 				</tr>
-				<c:forEach var ="s" items="${categoryList}">
+				<c:forEach var ="s" items="${customerList}">
 					<tr>
 						<td>${s.customerMail}</td>
 						<td>${s.customerPw}</td>
@@ -45,10 +38,9 @@
 						<td>${s.customerGender}</td>
 						<td>${s.updateDate}</td>
 						<td>${s.createDate}</td>
-						<td><a href="${pageContext.request.contextPath}/staff/categoryModify?categoryNo=${s.categoryNo}">회원 수정</a></td>
 				
 			
-						<td><a href="${pageContext.request.contextPath}/staff/removeCategory?categoryNo=${s.categoryNo}">회원 삭제</a></td>
+						<td><a href="${pageContext.request.contextPath}/staff/removeCategory?customerMail=${s.customerMail}">회원 삭제</a></td>
 						
 						
 						<td>

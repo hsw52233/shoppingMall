@@ -1,6 +1,7 @@
 package com.example.first.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,25 @@ public class CustomerController {
 
 	@Autowired
 	CustomerService customerService;
+	
+	//하상우) 관리자 페이지에서 회원 삭제
+	@GetMapping("/staff/removeCategory")
+	public String removeCustomer(@RequestParam String customerMail) {
+		
+		return "redirect:/staff/customerList";
+	}
+	
+	//하상우) 관리자 페이지에서 회원 리스트 
+	
+	@GetMapping("/staff/customerList")
+	public String customersList(Model model) {
+		
+	List<Customer> customerList = customerService.getCustomerList();
+	model.addAttribute("customerList", customerList);
+		
+		return "staff/customerList";
+	}
+	
 
 	// customer/log(로그아웃)
 	@GetMapping("/common/logout")
