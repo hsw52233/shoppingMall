@@ -31,8 +31,10 @@ public class GoodsService {
 		return goodsMapper.selectGoodsList(paramMap);
 	}
 	// Author : 이동윤 상품 라스트페이지
-	public int getLastPage (int categoryNo) {
-		return goodsMapper.goodsLastPage(categoryNo);
+	public int getLastPage (int categoryNo, Page page) {
+		int totalRow = goodsMapper.goodsLastPage(categoryNo);
+		int lastpage = page.getLastPage(totalRow);
+		return lastpage; 
 	}
 
 	
