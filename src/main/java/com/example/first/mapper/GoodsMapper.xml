@@ -17,4 +17,40 @@
 		inner join goods_file gf on g.goods_no = gf.goods_no
 		where g.goods_no = #{goodsNo}
 	</select>
+	
+	<!--  Author : 이동윤 상품별 리스트 -->
+	<select id="selectGoodsList" resultType="Map" parameterType="com.example.first.vo.Page">
+		select 
+			g.goods_no goodsNo,
+		    g.goods_title goodsTitle,
+		    g.goods_memo goodsMemo,
+		    g.goods_state goodsState,
+		    c.category_no categoryNo,
+		    c.category_title categoryTitle,
+		    gf.goods_file_name goodsFileName,
+		    gf.goods_file_ext goodsFileExt
+		from goods g
+		inner join goods_category gc on g.goods_no = gc.goods_no
+		inner join category c on gc.category_no = c.category_no
+		inner join goods_file gf on g.goods_no = gf.goods_no
+		<where>
+			<if test="categoryNo != null and categoryNo != ''">
+				c.category_no = #{categoryNo}
+			</if>
+		</where>
+		limit #{beginRow},#{rowPerPage}
+	</select>
+	
+	<!--  Author : 이동윤 상품별 카운트 -->
+	<select id="goodsLastPage" parameterType="Map">
+		select count(*)
+		from goods g
+		inner join goods_category gc on g.goods_no = gc.category_no
+		inner join category c on c.category_no = gc.category_no
+		<where>
+			<if test="categoryTitle != null and categoryTitle != ''">
+				c.category_no = #{categoryNo}
+			</if>
+		</where>
+	</select>
 </mapper>
