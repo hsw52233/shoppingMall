@@ -14,5 +14,7 @@ public interface CartMapper {
 	public List<Map<String,Object>> selectcartList(String customerMail);
 	
 	public int insertCart(Cart cart);
+	
+	public int deleteCart(int cartNo);
 
 }
