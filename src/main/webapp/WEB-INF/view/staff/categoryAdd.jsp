@@ -11,5 +11,16 @@
 </head>
 <body>
 
+	<div>
+		<form id="addCategory" method="post" action="${pageContext.request.contextPath }/staff/categoryAdd">
+		<table>
+		<td>categoryTitle</td>
+		<td><input type = "text" name="categoryTitle"></td>
+		</table>
+		<button type="submit">add category</button>
+		</form>
+	</div>
+
+
 </body>
 </html>

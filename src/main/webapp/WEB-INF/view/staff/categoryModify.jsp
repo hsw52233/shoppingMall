@@ -10,6 +10,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div>
+		<table>
+			<td>카테고리 수정</td>
+			<td>
+			<form action="${pageContext.request.contextPath}/staff/categoryModify" method="post">
+				<input type="text">
+				
+			
+			</form>
+			</td>
+			<td><button type="submit">수정하기</button></td>
+		</table>
+	
+	</div>
 </body>
 </html>

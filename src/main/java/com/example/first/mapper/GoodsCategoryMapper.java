@@ -8,7 +8,5 @@ import com.example.first.vo.Category;
 
 @Mapper
 public interface GoodsCategoryMapper {
-	
-	List<Category> getCategoryList();
 
 }
