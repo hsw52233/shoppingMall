@@ -49,7 +49,6 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<td><a href="${pageContext.request.contextPath}/staff/customerAdd">회원 추가</a></td>
 		</div>
 		
 	</div>
