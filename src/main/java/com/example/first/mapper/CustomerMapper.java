@@ -10,6 +10,10 @@ import com.example.first.vo.Customer;
 @Mapper
 public interface CustomerMapper {
 	
+	//하상우 ) 관리자에서 회원 삭제
+	
+	int removeCustomer(String customerMail);
+	
 	//하상우) 관리자에서 회원 리스트 조회
 	
 	List<Customer> getCustomerList();
