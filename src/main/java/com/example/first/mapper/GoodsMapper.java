@@ -1,12 +1,12 @@
 package com.example.first.mapper;
 
-import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface GoodsMapper {
-
-	public List<Map<String,Object>> selectGoodsList();
+	
+	// 굿즈 상세정보
+	public Map<String,Object> selectGoodsOne(int goodsNo);
 }
