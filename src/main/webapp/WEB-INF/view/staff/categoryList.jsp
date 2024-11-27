@@ -25,10 +25,11 @@
 					<td>categoryTitle</td>
 					<td>updateDate</td>
 					<td>createDate</td>
-					<td><a href="${pageContext.request.contextPath}/staff/categoryAdd">카테고리 추가</a></td>
+					<td>카테고리 수정</td>
+					<td>카테고리 삭제</td>
 				
 			
-						<td><a href="${pageContext.request.contextPath}/staff/categoryModify">카테고리 수정</a></td>
+						
 						
 					
 					
@@ -40,10 +41,10 @@
 						<td>${s.categoryTitle}</td>
 						<td>${s.updateDate}</td>
 						<td>${s.createDate}</td>
-						<td><a href="${pageContext.request.contextPath}/staff/categoryAdd">카테고리 추가</a></td>
+						<td><a href="${pageContext.request.contextPath}/staff/categoryModify?categoryNo=${s.categoryNo}">카테고리 수정</a></td>
 				
 			
-						<td><a href="${pageContext.request.contextPath}/staff/categoryModify">카테고리 수정</a></td>
+						<td><a href="${pageContext.request.contextPath}/staff/removeCategory?categoryNo=${s.categoryNo}">카테고리 삭제</a></td>
 						
 						
 						<td>
@@ -52,7 +53,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			
+			<td><a href="${pageContext.request.contextPath}/staff/categoryAdd">카테고리 추가</a></td>
 		</div>
 		
 	</div>
