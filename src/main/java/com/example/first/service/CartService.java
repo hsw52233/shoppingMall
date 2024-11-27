@@ -29,4 +29,15 @@ public class CartService {
 	public int getInsertCart(Cart cart) {
 		return cartMapper.insertCart(cart);
 	}
+	
+	// 장바구니 총합 액수
+	public long getCartByPayment(List<Map<String, Object>> cartList) {
+		long payment = cartList.stream().mapToLong(c ->(long)c.get("totalPrice")).sum();
+		return payment;
+	}
+	
+	// 장바구니 상품 삭제
+	public int getRemoveCart(int cartNo) {
+		return cartMapper.deleteCart(cartNo);
+	}
 }

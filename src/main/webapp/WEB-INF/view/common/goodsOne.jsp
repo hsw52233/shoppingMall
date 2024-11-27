@@ -46,7 +46,6 @@
         <input type="hidden" name="cartAmount" id="cartAmount" value="1"> 
         <button id="btnAddCart" type="button" class="btn btn-primary">장바구니 추가</button>
     </form>
-
 </body>
 	<script>
         // 수량 입력 필드의 값이 변경되면 해당 값을 변경
