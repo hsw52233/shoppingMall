@@ -7,6 +7,7 @@
 			g.goods_no goodsNo,
 		    g.goods_title goodsTitle,
 		    g.goods_memo goodsMemo,
+		    g.goods_price goodsPrice,
 		    g.goods_state goodsState,
 		    c.category_title categoryTitle
 		from goods g
