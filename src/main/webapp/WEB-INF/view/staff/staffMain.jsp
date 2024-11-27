@@ -21,5 +21,6 @@
 	<a href="${pageContext.request.contextPath}/staff/ordersList">주문 요청 리스트</a>
 	<a href="${pageContext.request.contextPath}/staff/customersList">회원 리스트</a>
 	<a href="${pageContext.request.contextPath}/staff/reviewsList">리뷰 관리 리스트</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 </body>
 </html>
