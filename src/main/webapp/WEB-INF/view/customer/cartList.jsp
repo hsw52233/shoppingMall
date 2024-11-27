@@ -12,5 +12,6 @@
 </head>
 <body>
 ${cartList}
+<a href="${pageContext.request.contextPath}/customer/payment">결제</a>
 </body>
 </html>
