@@ -1,5 +1,6 @@
 package com.example.first.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,11 @@ import com.example.first.vo.Customer;
 public class CustomerService {
 	@Autowired
 	CustomerMapper customerMapper;
+	
+	
+	public List<Customer> getCustomerList() {
+		return customerMapper.getCustomerList();
+	}
 	
 	// addCustomer값 안에 CustomerController에서 받아온 registerCustomer값을 넘겨줌
 	// CustomerMapper/insertCustomer식안에 registerCustomer값을 넘겨줌

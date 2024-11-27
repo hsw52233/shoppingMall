@@ -27,14 +27,7 @@
 					<td>updateDate</td>
 					<td>createDate</td>
 					<td>스태프 수정</td>
-					<td>스태프 삭제</td>
-				
-			
-						
-						
-					
-					
-					
+					<td>스태프 삭제</td>			
 				</tr>
 				<c:forEach var ="s" items="${staffList}">
 					<tr>
