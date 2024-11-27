@@ -14,9 +14,11 @@ public class OrdersService {
 	@Autowired
 	private OrdersMapper ordersMapper;
 
+	// 고객 주문 정보
 	public List<Map<String, Object>> getSelectOrdersList(String customerMail) {
 		
 		return ordersMapper.selectOrdersList(customerMail);
 	}
-
+	
+	
 }
