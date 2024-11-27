@@ -58,6 +58,10 @@ public class CustomerController {
 	}
 
 	// customer/home (메인페이지)
+	@GetMapping("/common/home")
+	public String home() {
+		return "common/home";
+	}
 
 	// customer/login (로그인페이지)
 	@GetMapping("/common/login")

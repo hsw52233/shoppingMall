@@ -49,7 +49,7 @@
 <div class="fakeContainer">
 	<div class="fakeBanner"><a href="#">쇼핑몰 배너</a></div>
 	<div class="fakeContentBox">
-		<div class="fakeContent leftBox"><a href="#">상품A</a></div>
+		<div class="fakeContent leftBox"><a href="${pageContext.request.contextPath}/common/goodsOne?goodsNo=1">상품A</a></div>
 		<div class="fakeContent"><a href="#">상품B</a></div>
 		<div class="fakeContent rightBox"><a href="#">상품C</a></div>
 	</div>

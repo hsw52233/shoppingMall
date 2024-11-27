@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.GoodsMapper">
-	<select id="selectGoodsList" resultType="Map">
-	
+	<!--  Author : 이동윤 상품상세정보 -->
+	<select id="selectGoodsOne">
+		select 
+			g.goods_no goodsNo,
+		    g.goods_title goodsTitle,
+		    g.goods_memo goodsMemo,
+		    g.goods_state goodsState,
+		    c.category_title categoryTitle,
+		    gf.goods_file_name goodsFileName,
+		    gf.goods_file_ext goodsFileExt
+		from goods g
+		inner join goods_category gc on g.goods_no = gc.goods_no
+		inner join category c on gc.category_no = c.category_no
+		inner join goods_file gf on g.goods_no = gf.goods_no
+		where g.goods_no = #{goodsNo}
 	</select>
 </mapper>
