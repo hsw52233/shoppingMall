@@ -27,4 +27,16 @@
 		where a.customer_mail =  #{customerMail}
 		order by o.orders_no desc
 	</select>
+	<!-- 결제 후 주문목록에 추가 -->
+	<insert id="insertOrder" parameterType="com.example.first.vo.Orders">
+		insert into orders(
+			goods_no,
+			orders_amount,
+			payment_no
+		) values (
+			#{goodsNo},
+			#{ordersAmount},
+			#{paymentNo}
+		)
+	</insert>
 </mapper>

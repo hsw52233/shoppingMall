@@ -40,7 +40,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<form id="formPayment" action="${pageContext.request.contextPath}/customer/payment">
+	<form method="post" id="formPayment" action="${pageContext.request.contextPath}/customer/payment">
 		<table class="table table-bordered">
 			<tr>
 				<td>
@@ -79,7 +79,7 @@
 			alert('주소를 선택해주세요');
 			return;
 		}
-		$('#formPayment').sumbit();
+		$('#formPayment').submit();
 	});
 </script>
 </html>
