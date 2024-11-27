@@ -10,6 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+${goodsList}<hr>
+${categoryNo}<hr>
+${currentPage}<hr>
+${startPage}<hr>
+${numPerPage}<hr>
+${endPage}<hr>
+${lastPage}<hr>
 </body>
 </html>
