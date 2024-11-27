@@ -3,28 +3,28 @@
 <mapper namespace="com.example.first.mapper.OrdersMapper">
 	<!--  Author : 이동윤 주문내역 리스트 -->
 	<select id="selectOrdersList" resultType="Map">
-		select
+		select 
 			o.orders_no ordersNo,
 			a.customer_mail customerMail,
-		    a.address_detail addressDetail,
+			a.address_detail addressDetail,
 			o.goods_no goodsNo,
-		    o.orders_amount ordersAmount,
-		    g.goods_title goodsTitle,
-		    g.goods_memo goodsMemo,
-		    c.category_title categoryTitle,
-		    g.goods_price goodsPrice,
-		    p.payment_method paymentMethod,
-		    p.payment_state paymentState,
-		    gf.goods_file_name goodsFileName,
-		    gf.goods_file_ext goodsFileExt
-		from orders o 
-		inner join goods g on o.goods_no = g.goods_no
+			o.orders_amount ordersAmount,
+			g.goods_title goodsTitle,
+			g.goods_memo goodsMemo,
+			c.category_title categoryTitle,
+			g.goods_price goodsPrice,
+			p.payment_method paymentMethod,
+			p.payment_state paymentState,
+			gf.goods_file_name goodsFileName,
+			gf.goods_file_ext goodsFileExt
+		from address a
+		inner join payment p on a.address_no = p.address_no
+		inner join orders o on p.payment_no = o.payment_no
+		inner join goods g on  o.goods_no = g.goods_no
 		inner join goods_category gc on g.goods_no = gc.goods_no
 		inner join category c on gc.category_no = c.category_no
-		inner join goods_file gf on g.goods_no = gf.goods_no
-		inner join payment p on o.payment_no = p.payment_no
-		inner join address a on p.address_no = a.address_no
-		where a.customer_mail = #{customerMail}
+		left join goods_file gf on gf.goods_no = g.goods_no
+		where a.customer_mail =  #{customerMail}
 		order by o.orders_no desc
 	</select>
 </mapper>

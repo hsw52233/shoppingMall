@@ -46,7 +46,7 @@ $('#btn').click(function(){ // 버튼클릭 시 가동
 		alert('ID를 입력해주세요.');
 	} else if ($('#password').val() == ""){ // 만약 password값이 비어있다면
 		alert('password를 입력해주세요.');
-	} else if ($('#password').val().length <= 4){ // 만약 password값이 4자릿수 이하라면
+	} else if ($('#password').val().length < 4){ // 만약 password값이 4자릿수 이하라면
 		alert('password는 4글자 이상 입력하셔야합니다.');
 	} else {
 		$('#form').submit();

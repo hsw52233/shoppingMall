@@ -14,7 +14,7 @@
 		from goods g
 		inner join goods_category gc on g.goods_no = gc.goods_no
 		inner join category c on gc.category_no = c.category_no
-		inner join goods_file gf on g.goods_no = gf.goods_no
+		left join goods_file gf on g.goods_no = gf.goods_no
 		where g.goods_no = #{goodsNo}
 	</select>
 	
