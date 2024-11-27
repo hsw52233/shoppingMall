@@ -40,7 +40,7 @@
 						<td>${s.createDate}</td>
 				
 			
-						<td><a href="${pageContext.request.contextPath}/staff/removeCategory?customerMail=${s.customerMail}">회원 삭제</a></td>
+						<td><a href="${pageContext.request.contextPath}/staff/removeCustomer?customerMail=${s.customerMail}">회원 삭제</a></td>
 						
 						
 						<td>

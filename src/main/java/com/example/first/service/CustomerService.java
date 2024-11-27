@@ -17,6 +17,10 @@ public class CustomerService {
 	CustomerMapper customerMapper;
 	
 	
+	public int removeCustomer(String customerMail) {
+		return customerMapper.removeCustomer(customerMail);
+	}
+	
 	public List<Customer> getCustomerList() {
 		return customerMapper.getCustomerList();
 	}

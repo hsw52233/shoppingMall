@@ -25,8 +25,10 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	//하상우) 관리자 페이지에서 회원 삭제
-	@GetMapping("/staff/removeCategory")
+	@GetMapping("/staff/removeCustomer")
 	public String removeCustomer(@RequestParam String customerMail) {
+		
+		int deleteCustomer = customerService.removeCustomer(customerMail);
 		
 		return "redirect:/staff/customerList";
 	}

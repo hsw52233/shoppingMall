@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.CustomerMapper">
 	
+	<!-- 하상우) 관리자에서 회원 삭제 -->
 	
+	<delete id="removeCustomer" parameterType="com.example.first.vo.Customer">
+		DELETE FROM
+			customer
+		WHERE customer_mail = #{customerMail}
+	
+	</delete>
 	
 	
 	
