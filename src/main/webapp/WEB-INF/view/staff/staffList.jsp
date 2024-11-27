@@ -17,47 +17,27 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>CUSTOMER LIST</h1>
+			<h1>STAFF LIST</h1>
 			
 			<table class="table table-striped">
 				<tr>
-					<td>customerMail</td>
-					<td>customerPw</td>
-					<td>customerBirth</td>
-					<td>customerGender</td>
+					<td>staffNo</td>
+					<td>staffId</td>
 					<td>updateDate</td>
-					<td>createDate</td>
-					<td>회원 수정</td>
-					<td>회원 삭제</td>
-				
-			
-						
-						
-					
-					
-					
+					<td>createDate</td>		
 				</tr>
-				<c:forEach var ="s" items="${categoryList}">
+				
+				
+				<c:forEach var ="s" items="${staffList}">
 					<tr>
-						<td>${s.customerMail}</td>
-						<td>${s.customerPw}</td>
-						<td>${s.customerBirth}</td>
-						<td>${s.customerGender}</td>
+						<td>${s.staffNo}</td>
+						<td>${s.staffId}</td>
 						<td>${s.updateDate}</td>
 						<td>${s.createDate}</td>
-						<td><a href="${pageContext.request.contextPath}/staff/categoryModify?categoryNo=${s.categoryNo}">회원 수정</a></td>
-				
-			
-						<td><a href="${pageContext.request.contextPath}/staff/removeCategory?categoryNo=${s.categoryNo}">회원 삭제</a></td>
-						
-						
-						<td>
-							
-						</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<td><a href="${pageContext.request.contextPath}/staff/customerAdd">회원 추가</a></td>
+			<td><a href="${pageContext.request.contextPath}/staff/staffAdd">스태프 추가</a></td>
 		</div>
 		
 	</div>
