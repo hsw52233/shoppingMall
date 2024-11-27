@@ -3,15 +3,7 @@
 <mapper namespace="com.example.first.mapper.GoodsCategoryMapper">
 
 
-	<select id="getCategoryList" parameterType="com.example.first.vo.GoodsCategory">
-		
-		SELECT
-			category_no categoryNo,
-			category_title
-		FROM category
 	
-	
-	</select>
 
 
 
