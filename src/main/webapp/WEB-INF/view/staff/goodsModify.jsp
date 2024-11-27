@@ -10,8 +10,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div>
+		<table>
+			<td>상품 수정</td>
+			<div>
+			<td>
+			<form action="${pageContext.request.contextPath}/staff/goodsModify" method="post">
+				<input type="hidden" name="goodsNo" value="${goods.goodsNo}">
+   				 goodsTitle :   <input type="text" name="goodsTitle" value="${goods.goodsTitle}">
+   				 goodsMemo :     <input type="text" name="goodsMemo" value="${goods.goodsMemo}">
+   				 goodsPrice :    <input type="number" name="goodsPrice" value="${goods.goodsPrice}">
+				<td><button type="submit">수정하기</button></td>	
+			</form>
+			</td>
+			</div>
+		</table>
 	
-
+	</div>
 </body>
 </html>

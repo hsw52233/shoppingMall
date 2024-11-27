@@ -11,5 +11,20 @@
 </head>
 <body>
 
+	<div>
+		<form  method="post" action="${pageContext.request.contextPath }/staff/goodsAdd">
+		<table>
+		<td>goodsTitle</td>
+		<td><input type = "text" name="goodsTitle"></td>
+		<td>goodsMemo</td>
+		<td><input type = "text" name="goodsMemo"></td>
+		<td>goodsPrice</td>
+		<td><input type = "text" name="goodsPrice"></td>
+		</table>
+		<button type="submit">add goods</button>
+		</form>
+	</div>
+
+
 </body>
 </html>
