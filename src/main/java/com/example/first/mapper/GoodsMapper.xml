@@ -8,13 +8,10 @@
 		    g.goods_title goodsTitle,
 		    g.goods_memo goodsMemo,
 		    g.goods_state goodsState,
-		    c.category_title categoryTitle,
-		    gf.goods_file_name goodsFileName,
-		    gf.goods_file_ext goodsFileExt
+		    c.category_title categoryTitle
 		from goods g
 		inner join goods_category gc on g.goods_no = gc.goods_no
 		inner join category c on gc.category_no = c.category_no
-		left join goods_file gf on g.goods_no = gf.goods_no
 		where g.goods_no = #{goodsNo}
 	</select>
 	
