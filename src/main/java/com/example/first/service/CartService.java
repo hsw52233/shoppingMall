@@ -38,6 +38,6 @@ public class CartService {
 	
 	// 장바구니 상품 삭제
 	public int getRemoveCart(int cartNo) {
-		return cartMapper.deleteCart(cartNo);
+		return cartMapper.deleteCartByCartNo(cartNo);
 	}
 }

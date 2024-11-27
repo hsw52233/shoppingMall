@@ -15,6 +15,8 @@ public interface CartMapper {
 	
 	public int insertCart(Cart cart);
 	
-	public int deleteCart(int cartNo);
+	public int deleteCartByCartNo(int cartNo);
+	
+	public int deleteCartAll(String customerMail);
 
 }

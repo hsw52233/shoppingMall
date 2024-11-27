@@ -43,10 +43,17 @@
 		#{cartAmount})
 	</insert>
 	
-	<!-- 장바구니 삭제 -->
-	<delete id="deleteCart">
+	<!-- 고객 장바구니 개별 삭제 -->
+	<delete id="deleteCartByCartNo">
 		delete
 		from cart
 		where cart_no = #{cartNo}
+	</delete>
+	
+	<!-- 고객 장바구니 전체 삭제  -->
+	<delete id="deleteCartAll">
+		delete
+		from cart
+		where customer_mail = #{customerMail}
 	</delete>
 </mapper>
