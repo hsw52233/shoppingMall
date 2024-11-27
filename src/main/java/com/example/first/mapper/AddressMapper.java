@@ -9,6 +9,10 @@ import com.example.first.vo.Address;
 
 @Mapper
 public interface AddressMapper {
+	
+	Address getAddressByCustomerMail(String customerMail);
+	
+	
 	List<Map<String,Object>> selectAddressList(String customerMail);
 	
 	int insertAddAddress(Address address);

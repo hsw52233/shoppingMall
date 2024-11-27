@@ -16,6 +16,15 @@ public class CustomerService {
 	@Autowired
 	CustomerMapper customerMapper;
 	
+	// 하상우) 관리자 회원 상세 정보
+	
+	public Customer getCustomerMail(String customerMail) {
+		return customerMapper.getCustomerMail(customerMail);
+	}
+	
+	public Customer getCustomerOne(String customerMail) {
+	    return customerMapper.getCustomerOne(customerMail);  
+	}
 	
 	public int removeCustomer(String customerMail) {
 		return customerMapper.removeCustomer(customerMail);

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.first.service.AddressService;
 import com.example.first.service.CustomerService;
+import com.example.first.vo.Address;
 import com.example.first.vo.Customer;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +26,27 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
+	@Autowired
+	AddressService addressService;
+	
+	
+	//하상우 ) 관리자 회원 상세 정보 조회
+	
+	@GetMapping("/staff/customerOne")
+	public String customerOne(@RequestParam String customerMail, Model model) {
+	    Customer customer = customerService.getCustomerOne(customerMail);
+	    Address address = addressService.getAddressOne(customerMail); // AddressService에서 해당 메서드 구현 필요
+	    
+	    Customer customermail = customerService.getCustomerMail(customerMail);
+	    model.addAttribute("customerMail", customermail);
+	    
+	    model.addAttribute("customer", customer);
+	    model.addAttribute("address", address);
+	    
+	   
+
+	    return "staff/customerOne";
+	}
 	//하상우) 관리자 페이지에서 회원 삭제
 	@GetMapping("/staff/removeCustomer")
 	public String removeCustomer(@RequestParam String customerMail) {
