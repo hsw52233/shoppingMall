@@ -15,6 +15,10 @@ public class AddressService {
 	@Autowired
 	private AddressMapper addressMapper;
 	
+	public Address getAddressOne(String customerMail) {
+        return addressMapper.getAddressByCustomerMail(customerMail);
+    }
+	
 	// 고객 주소 리스트
 	public List<Map<String,Object>> getAddressList(String customerMail){
 		return addressMapper.selectAddressList(customerMail);

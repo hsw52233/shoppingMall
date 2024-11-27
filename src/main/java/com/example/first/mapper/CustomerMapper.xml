@@ -2,6 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.CustomerMapper">
 	
+	
+	
+	
+
+	<!-- 하상우) 관리자에서 회원 상세 정보 조회 -->
+	
+	<select id="getCustomerMail" parameterType="String" resultType="com.example.first.vo.Customer">
+	
+		SELECT
+			customer_mail customerMail,
+		    customer_pw customerPw,
+		    customer_birth customerBirth,
+		    customer_gender customerGender,
+		    update_date updateDate,
+		    create_date createDate
+		from customer
+		WHERE customer_mail = #{customerMail}
+	
+	
+	</select>
+	
+	
+	
+	<select id="getCustomerOne" parameterType="String" resultType="com.example.first.vo.Customer">
+    SELECT
+        a.address_no addressNo,
+        a.customer_mail customerMail,
+        a.address_detail addressDetail,
+        a.update_date AS addressUpdateDate,
+        a.create_date AS addressCreateDate,
+        c.customer_pw customerPw,
+        c.customer_birth customerBirth,
+        c.customer_gender customerGender,
+        c.update_date AS customerUpdateDate,
+        c.create_date AS customerCreateDate
+    FROM Address a
+    JOIN Customer c ON a.customer_mail = c.customer_mail
+    WHERE c.customer_mail = #{customerMail}
+    LIMIT 1; <!-- 여기서 LIMIT 1로 하나만 반환하도록 수정 -->
+</select>
+	
 	<!-- 하상우) 관리자에서 회원 삭제 -->
 	
 	<delete id="removeCustomer" parameterType="com.example.first.vo.Customer">
