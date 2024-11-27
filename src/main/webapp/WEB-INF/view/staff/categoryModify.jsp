@@ -15,12 +15,12 @@
 			<td>카테고리 수정</td>
 			<td>
 			<form action="${pageContext.request.contextPath}/staff/categoryModify" method="post">
-				<input type="text">
-				
-			
+				<input type="hidden" name="categoryNo" value="${category.categoryNo}">
+   				 <input type="text" name="categoryTitle" value="${category.categoryTitle}">
+				<td><button type="submit">수정하기</button></td>	
 			</form>
 			</td>
-			<td><button type="submit">수정하기</button></td>
+			
 		</table>
 	
 	</div>
