@@ -20,5 +20,9 @@ public class OrdersService {
 		return ordersMapper.selectOrdersList(customerMail);
 	}
 	
+	public List<Map<String,Object>> getSelectDeliveryList(int paymentNo){
+		return ordersMapper.selectDeliveryList(paymentNo);
+	}
+	
 	
 }
