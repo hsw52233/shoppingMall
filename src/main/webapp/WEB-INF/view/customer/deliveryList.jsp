@@ -35,7 +35,7 @@
 			<td>${d.totalPrice}</td>
 			<td>
 				<c:if test="${d.paymentState == '결제완료'}">
-					<a href="${pageContext.request.contextPath}/customer/reviews?ordersNo=${d.ordersNo}">후기 작성</a>				
+					<a href="${pageContext.request.contextPath}/customer/reviews?ordersNo=${d.ordersNo}&paymentNo=${d.paymentNo}">후기 작성</a>				
 				</c:if>
 			
 			</td>
