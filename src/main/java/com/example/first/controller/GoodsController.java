@@ -9,15 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.first.service.BoardService;
 import com.example.first.service.GoodsCategoryService;
 import com.example.first.service.GoodsFileService;
 import com.example.first.service.GoodsService;
-import com.example.first.vo.Category;
 import com.example.first.vo.Goods;
-import com.example.first.vo.Page;
+import com.example.first.vo.GoodsForm;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
@@ -82,21 +83,27 @@ public class GoodsController {
 		}
 		
 		@PostMapping("/staff/goodsAdd")
-		public String goodsAdd(Goods goods) {
-			
-			int row = goodsService.goodsAdd(goods);
-			if(row == 0 ) {
-				return "redirect:/staff/goodsList";
+		public String goodsAdd(HttpSession session, Model model, GoodsForm goodsForm) {
+			log.debug("goodsForm : "+goodsForm.toString());
+			List<MultipartFile> list = goodsForm.getGoodsFile();
+			if(list != null && list.size() != 0) {
+				for(MultipartFile file : list) {
+					if(!file.getContentType().equals("image/jpeg") && !file.getContentType().equals("image/png")) {
+						model.addAttribute("msg","jpg , png 파일만 입력 가능");
+						return "staff/goodsAdd";
+					}
+				}
 			}
-			
+			String path = session.getServletContext().getRealPath("/upload/");
+			goodsService.goodsAdd(goodsForm,path);
 			return "redirect:/staff/goodsList";
 		}
 	//하상우) 상품 삭제
 	
 	@GetMapping("/staff/removegoods")
-	public String removeGoods(@RequestParam int goodsNo) {
-		
-		int deleteRow = goodsService.remove(goodsNo);
+	public String removeGoods(HttpSession session,@RequestParam int goodsNo) {
+		String path = session.getServletContext().getRealPath("/upload/");
+		goodsService.remove(goodsNo,path);
 		
 		
 		return "redirect:/staff/goodsList";
@@ -126,6 +133,14 @@ public class GoodsController {
 		model.addAttribute("goods", goods);
 		model.addAttribute("reviewsList", reviewsList);
 		return "common/goodsOne";
+	}
+	
+	// Author : 이동윤 상품상세정보
+	@GetMapping("/staff/goodsOne")
+	public String goodsOneByStaff(Model model, @RequestParam Integer goodsNo) {
+		Map<String, Object> goods = goodsService.getGoodsOne(goodsNo);
+		model.addAttribute("goods", goods);
+		return "staff/goodsOne";
 	}
 
 }

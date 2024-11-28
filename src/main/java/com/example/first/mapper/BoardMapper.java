@@ -15,4 +15,6 @@ public interface BoardMapper {
 	public int selectReviewsByOrders(int ordersNo);
 	
 	public List<Map<String,Object>> selectReviewListByGoods(Integer goodsNo);
+	
+	public int deleteReviewsByGoods(int goodsNo);
 }
