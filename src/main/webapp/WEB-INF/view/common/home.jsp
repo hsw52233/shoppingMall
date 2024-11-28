@@ -19,12 +19,24 @@
   	<div class="fakeLogout">
 		<a href="${pageContext.request.contextPath}/common/logout">로그아웃</a>
 	</div>
+	<form id="formSearchTitle" action="${pageContext.request.contextPath}/common/home">
+		<select id="categoryNo" name="categoryNo">
+			<option value = "">:::전체:::</option>
+			<c:forEach items="${goodsList}" var="g">
+				<option value="${g.categoryNo}">${g.categoryTitle}</option>
+			</c:forEach>
+		</select>
+		<input type="text" name = "searchTitle" id="searchTitle" value="${searchTitle}">
+		<button id="btnSearchTitle" type="button">검색</button>
+	</form>
 	<table class ="table table-bordered">
 		<c:forEach items="${goodsList}" var="g">
 		<tr>
 			<td>이미지</td>
 			<td>goodsNo</td>
+			<td>categoryTitle</td>
 			<td>goodsTitle</td>
+			<td>goodsMemo</td>
 		</tr>
 		<tr>
 			<td>
@@ -32,11 +44,22 @@
 				
 			</td>
 			<td>${g.goodsNo}</td>
+			<td>${g.categoryTitle}</td>
 			<td>
 				<a href="${pageContext.request.contextPath}/common/goodsOne?goodsNo=${g.goodsNo}">${g.goodsTitle}</a>
 			</td>
+			<td>${g.goodsMemo}</td>
 		</tr>
 		</c:forEach>
 	</table>
 </body>
+<script>
+	$('#btnSearchTitle').click(function() {
+		if($('#searchTitle').val() == ''){
+			alert('검색어를 입력해주세요');
+			return;
+		} 
+		$('#formSearchTitle').submit();
+	});
+</script>
 </html>

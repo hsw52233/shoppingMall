@@ -128,22 +128,4 @@ public class GoodsController {
 		return "common/goodsOne";
 	}
 
-	// Author : 이동윤 상품리스트
-	@GetMapping("/common/goodsList")
-	public String getMethodName(Model model, Page page, @RequestParam(defaultValue = "0") int categoryNo) {
-		List<Map<String, Object>> goodsList = goodsService.getGoodsListByCategory(categoryNo, page);
-		int lastPage = goodsService.getLastPage(categoryNo,page);
-		
-		log.debug("lastPage : "+lastPage);
-		log.debug("beginRow : "+page.getBeginRow());
-		model.addAttribute("categoryNo",categoryNo);
-		model.addAttribute("currentPage",page.getCurrentPage());
-		model.addAttribute("startPage",page.getStartPage());
-		model.addAttribute("numPerPage",page.getNumPerPage());
-		model.addAttribute("endPage",page.getEndPage());
-		model.addAttribute("lastPage",lastPage);
-		model.addAttribute("goodsList",goodsList);
-		return "common/goodsList";
-	}
-
 }
