@@ -30,7 +30,7 @@
 				<td>${o.addressDetail}</td>
 				<td>
 					<c:if test="${o.paymentState == '배송중' }">
-					<a href="${pageContext.request.contextPath}/customer/paymentComplete?paymentNo=${o.paymentNo}">
+					<a href="${pageContext.request.contextPath}/staff/paymentComplete?paymentNo=${o.paymentNo}">
 						${o.paymentState}<!-- 배송중일때 배송완료로 바꾸면서 페이지 이동 -->
 					</a>
 					</c:if>
@@ -38,9 +38,7 @@
 						${o.paymentState}
 					</c:if>
 				</td>
-				<td>
-					<a href="${pageContext.request.contextPath}/customer/deliveryList?paymentNo=${o.paymentNo}">상품 목록</a>
-				</td>
+				
 			</tr>
 		</c:forEach>
 	</table>

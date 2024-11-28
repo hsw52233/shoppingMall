@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.first.service.AddressService;
 import com.example.first.service.CustomerService;
 import com.example.first.service.GoodsService;
+import com.example.first.service.OrdersService;
+import com.example.first.service.PaymentService;
 import com.example.first.vo.Address;
 import com.example.first.vo.Customer;
+import com.example.first.vo.Goods;
 import com.example.first.vo.Page;
+import com.example.first.vo.Payment;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +37,28 @@ public class CustomerController {
 	@Autowired
 	GoodsService goodsService;
 	
+	@Autowired
+	OrdersService ordersService;
+	
+	@Autowired
+	PaymentService paymentService;
+	
+	
+	@GetMapping("/staff/paymentComplete")
+	public String paymentComplete(@RequestParam String customerMail, @RequestParam int paymentNo) {
+		String paymentState = "결제완료";
+		if (paymentNo != 0) {
+			paymentState = "배송중";
+		}
+		int row = paymentService.getUpdatePaymentSate(paymentNo, paymentState);
+		if (row == 1) {
+			log.debug("결제상태 변경 성공");
+			return "redirect:/staff/customerOne?customerMail="+customerMail;
+		}
+		return "redirect:/staff/customerOne?customerMail="+customerMail;
+	}
+	
+	
 	
 	//하상우 ) 관리자 회원 상세 정보 조회
 	
@@ -48,7 +74,11 @@ public class CustomerController {
 	    model.addAttribute("address", address);
 	    
 	   
-
+		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail);
+		model.addAttribute("orderList", orderList);
+		
+		
+	    
 	    return "staff/customerOne";
 	}
 	//하상우) 관리자 페이지에서 회원 삭제

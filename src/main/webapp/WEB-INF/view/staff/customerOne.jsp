@@ -44,10 +44,39 @@
 			
 			<br>
 			<!-- 주문 리스트 -->
-			<h2> OrderList</h2>
-			<table class="table">
+			<h2>배송 상태</h2>
+	<table class="table table-bordered">
+		<tr>
+			<td>paymentNo</td>
+			<td>addressNo</td>
+			<td>paymentPrice</td>
+			<td>paymentMethod</td>
+			<td>addressDetail</td>
+			<td>paymentState</td>
+			<td>상품목록</td>
+		</tr>
+		<c:forEach items="${orderList}" var="o">
+			<tr>
+				<td>${o.paymentNo}</td>
+				<td>${o.addressNo}</td>
+				<td>${o.paymentPrice}</td>
+				<td>${o.paymentMethod}</td>
+				<td>${o.addressDetail}</td>
+				<td>
+					<c:if test="${o.paymentState == '결제완료' }">
+					<a href="${pageContext.request.contextPath}/staff/paymentComplete?paymentNo=${o.paymentNo}&customerMail=${customer.customerMail}">
+						<!-- 배송중일때 배송완료로 바꾸면서 페이지 이동 -->
+						${o.paymentState}
+					</a>
+					</c:if>
+					<c:if test="${o.paymentState == '배송중'}">
+						${o.paymentState}
+					</c:if>
+				</td>
 				
-			</table>			
+			</tr>
+		</c:forEach>
+	</table>
 			<br>
 			
 			</div>
