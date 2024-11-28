@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.first.mapper.BoardMapper"></mapper>
+<mapper namespace="com.example.first.mapper.BoardMapper">
+	<!-- 후기 입력 -->
+	<insert id="insertReviews">
+		insert into board(
+			orders_no,
+			board_content
+		) values (
+			#{ordersNo},
+			#{boardContent}
+		)
+	</insert>
+	<!-- 후기 중복방지 -->
+	<select id="selectReviewsByOrders">
+		select count(*)
+		from board
+		where orders_no = #{ordersNo}
+	</select>
+</mapper>
