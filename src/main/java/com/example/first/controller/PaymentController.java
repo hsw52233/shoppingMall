@@ -36,7 +36,7 @@ public class PaymentController {
 		String customerMail = ((Customer) (session).getAttribute("customerMail")).getCustomerMail();
 		String paymentState = "배송중";
 		if (paymentNo != 0) {
-			paymentState = "결제완료";
+			paymentState = "배송완료";
 		}
 		int row = paymentService.getUpdatePaymentSate(paymentNo, paymentState);
 		if (row == 1) {

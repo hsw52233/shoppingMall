@@ -17,4 +17,20 @@
 		from board
 		where orders_no = #{ordersNo}
 	</select>
+	
+	<!-- 상품별로/ 상품전체 후기 리스트 -->
+	<select id="selectReviewListByGoods" resultType="Map">
+		select 
+			b.orders_no ordersNo,
+		    b.board_content boardContent,
+		    b.update_date updateDate
+		from board b
+		inner join orders o on o.orders_no = b.orders_no
+		<where>
+			<if test="goodsNo != null and goodsNo != ''">
+				 o.goods_no = #{goodsNo}
+			</if>
+		</where>
+		order by b.orders_no desc
+	</select>
 </mapper>
