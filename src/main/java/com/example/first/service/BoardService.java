@@ -1,5 +1,8 @@
 package com.example.first.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +14,17 @@ public class BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
 	
+	// 이동윤 후기 추가
 	public int getInsertReviews(Board board) {
 		return boardMapper.insertReviews(board);
 	}
 	
+	// 이동윤 중복 확인 로직
 	public int getDuplicateReviews(int oredersNo) {
 		return boardMapper.selectReviewsByOrders(oredersNo);
+	}
+	// 이동윤 상품별 후기 리스트
+	public List<Map<String,Object>> getReviewsListByGoods(Integer goodsNo){
+		return boardMapper.selectReviewListByGoods(goodsNo);
 	}
 }

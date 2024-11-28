@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.first.service.BoardService;
 import com.example.first.service.GoodsCategoryService;
 import com.example.first.service.GoodsFileService;
 import com.example.first.service.GoodsService;
@@ -28,6 +29,8 @@ public class GoodsController {
 	private GoodsFileService goodsFileService;
 	@Autowired
 	private GoodsCategoryService goodsCategoryService;
+	@Autowired
+	private BoardService boardService;
 	
 	
 	// 하상우) 재고 활성화
@@ -117,9 +120,11 @@ public class GoodsController {
 
 	// Author : 이동윤 상품상세정보
 	@GetMapping("/common/goodsOne")
-	public String goodsOne(Model model, @RequestParam int goodsNo) {
+	public String goodsOne(Model model, @RequestParam Integer goodsNo) {
 		Map<String, Object> goods = goodsService.getGoodsOne(goodsNo);
+		List<Map<String, Object>> reviewsList = boardService.getReviewsListByGoods(goodsNo);
 		model.addAttribute("goods", goods);
+		model.addAttribute("reviewsList", reviewsList);
 		return "common/goodsOne";
 	}
 

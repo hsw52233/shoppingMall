@@ -41,11 +41,28 @@
     </div>
 
     <!-- 장바구니 추가 -->
-    <form id = "formAddCart" method="post" action="${pageContext.request.contextPath}/customer/addCart" id="addCartForm">
-        <input type="hidden" name="goodsNo" value="${goods.goodsNo}">
-        <input type="hidden" name="cartAmount" id="cartAmount" value="1"> 
-        <button id="btnAddCart" type="button" class="btn btn-primary">장바구니 추가</button>
-    </form>
+    <div>
+	    <form id = "formAddCart" method="post" action="${pageContext.request.contextPath}/customer/addCart" id="addCartForm">
+	        <input type="hidden" name="goodsNo" value="${goods.goodsNo}">
+	        <input type="hidden" name="cartAmount" id="cartAmount" value="1"> 
+	        <button id="btnAddCart" type="button" class="btn btn-primary">장바구니 추가</button>
+	    </form>
+    </div>
+    <div>
+    	<table class="table table-bordered">
+    		<tr>
+    			<td>ordersNo</td>
+    			<td>boardContent</td>
+    		</tr>
+    		<c:forEach items="${reviewsList}" var="r">
+	    		<tr>
+	    			<td>${r.ordersNo}</td>
+	    			<td>${r.boardContent}</td>
+	    			<td>${r.updateDate}</td>
+	    		</tr>
+    		</c:forEach>
+    	</table>
+    </div>
 </body>
 	<script>
         // 수량 입력 필드의 값이 변경되면 해당 값을 변경
