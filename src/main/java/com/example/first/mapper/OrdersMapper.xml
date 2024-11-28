@@ -13,6 +13,7 @@
 		from payment p
 		inner join address a on p.address_no = a.address_no
 		where customer_mail = #{customerMail}
+		order by payment_no desc
 	</select>
 	<!-- 결제 후 주문목록에 추가 -->
 	<insert id="insertOrder" parameterType="com.example.first.vo.Orders">

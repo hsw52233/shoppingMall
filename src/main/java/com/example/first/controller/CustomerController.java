@@ -107,14 +107,14 @@ public class CustomerController {
 
 	// customer/home (메인페이지)
 	@GetMapping("/common/home")
-	public String home(Model model, @RequestParam(defaultValue = "0")int categoryNo, Page page) {
-		goodsService.getGoodsListByCategory(categoryNo, page);
-		List<Map<String, Object>> goodsList = goodsService.getGoodsListByCategory(categoryNo, page);
+	public String home(Model model, @RequestParam(defaultValue = "0") Integer categoryNo, Page page, @RequestParam(required = false) String searchTitle) {
+		List<Map<String, Object>> goodsList = goodsService.getGoodsListByCategory(categoryNo, page, searchTitle);
 		int lastPage = goodsService.getLastPage(categoryNo,page);
 		
 		log.debug("lastPage : "+lastPage);
 		log.debug("beginRow : "+page.getBeginRow());
 		model.addAttribute("categoryNo",categoryNo);
+		model.addAttribute("searchTitle",searchTitle);
 		model.addAttribute("currentPage",page.getCurrentPage());
 		model.addAttribute("startPage",page.getStartPage());
 		model.addAttribute("numPerPage",page.getNumPerPage());

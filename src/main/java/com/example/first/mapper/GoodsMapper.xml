@@ -99,10 +99,18 @@
 		from goods g
 		inner join goods_category gc on g.goods_no = gc.goods_no
 		inner join category c on gc.category_no = c.category_no
-		inner join goods_file gf on g.goods_no = gf.goods_no
+		left join (select  
+						gf.goods_file_name,
+						gf.goods_file_ext, 
+						gf.goods_no
+					from goods_file gf
+					limit 1) gf on g.goods_no = gf.goods_no
 		<where>
 			<if test="categoryNo != null and categoryNo != ''">
 				c.category_no = #{categoryNo}
+			</if>
+			<if test="searchTitle != null and searchTitle != ''">
+				and g.goods_title like concat('%',#{searchTitle},'%')
 			</if>
 		</where>
 		limit #{beginRow},#{rowPerPage}
