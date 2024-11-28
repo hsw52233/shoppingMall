@@ -14,46 +14,32 @@
 <body class="container-flud">
 	<div class="row">
 		
-		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>STAFF LIST</h1>
-			
-			<table class="table table-striped">
+			<h1>STAFF ONE</h1>
+			<table class="table">
 				<tr>
-					<td>staffNo</td>
 					<td>staffId</td>
-					<td>staffPw</td>
-					<td>updateDate</td>
-					<td>createDate</td>
-					<td>스태프 수정</td>
-					<td>스태프 삭제</td>			
+					<td>${profile.staffId}</td>
 				</tr>
-				<c:forEach var ="s" items="${staffList}">
-					<tr>
-						<td>${s.staffNo}</td>
-						<td>${s.staffId}</td>
-						<td>${s.staffPw}</td>
-						<td>${s.updateDate}</td>
-						<td>${s.createDate}</td>
-						
-						<td><a href="${pageContext.request.contextPath}/staff/staffModify?categoryNo=${s.categoryNo}">스태프 수정</a></td>
-				
-			
-						<td><a href="${pageContext.request.contextPath}/staff/removeStaff?categoryNo=${s.categoryNo}">스태프 삭제</a></td>
-						
-						
-						<td>
-							
-						</td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td>staffPw</td>
+					<td>${profile.staffPw}</td>
+				</tr>
+				<tr>
+					<td>updateDate</td>
+					<td>${profile.updateDate}</td>
+				</tr>
+				<tr>
+					<td>createDate</td>
+					<td>${profile.createDate}</td>
+				</tr>
 			</table>
-			<td><a href="${pageContext.request.contextPath}/staff/staffAdd">스태프 추가</a></td>
+			<br>
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+			</div>
 		</div>
-		
 	</div>
 </body>
+
 </html>
-
-

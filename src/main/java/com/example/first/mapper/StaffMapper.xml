@@ -2,6 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.StaffMapper">
 
+
+	<select id="getStaffNo" parameterType="int" resultType="com.example.first.vo.Staff">
+	SELECT
+		staff_no staffNo,
+		staff_id staffId,
+		staff_pw staffPw,
+		update_date updateDate,
+		create_date createDate
+	FROM staff
+	WHERE staff_no = #{staffNo}
+		
+	
+	</select>
+
+
+	<select id="profile" parameterType="com.example.first.vo.Staff">
+		SELECT
+		staff_no staffNo,
+		staff_id staffId,
+		staff_pw staffPw,
+		update_date updateDate,
+		create_date createDate
+	FROM staff
+		
+	</select>
+
+
 	<insert id="staffAdd" parameterType="com.example.first.vo.Staff">
 	
 		INSERT INTO staff(staff_id, staff_pw)

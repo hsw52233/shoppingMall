@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.controller.StaffController;
 import com.example.first.service.StaffService;
-import com.example.first.vo.Category;
 import com.example.first.vo.Staff;
 
 import jakarta.servlet.http.HttpSession;
@@ -27,7 +26,18 @@ public class StaffController {
 	@Autowired StaffService staffService;
 	
 	
-	//로그인한 스태프 상세조회
+	// 로그인한 스태프 상세 조회
+	@GetMapping("/staff/profile")
+	public String staffOne(Model model, HttpSession session) {
+	
+		
+		List<Staff> profile = staffService.profile();
+		model.addAttribute("profile", profile);
+		return "staff/profile";
+	}
+	
+	
+	//스태프 조회
 	
 	@GetMapping("/staff/staffList")
 	public String staffList(Model model) {
