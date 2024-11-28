@@ -29,6 +29,13 @@ public class PaymentService {
 	@Autowired
 	private OrdersMapper ordersMapper;
 	
+	
+	public int paymentModifyActive(Payment payment) {
+		return paymentMapper.paymentModifyActive(payment);
+	}
+	
+	
+	
 	public void getInsertPayment(int addressNo, int paymentPrice, String paymentMethod, String CustomerMail) {
 		Payment payment = new Payment();
 		payment.setAddressNo(addressNo);
