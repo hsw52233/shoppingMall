@@ -26,26 +26,28 @@
 			#{paymentNo}
 		)
 	</insert>
-	<!-- 배송완료로 바꾸면 뜨는 payment 안에 있는 주문목록 -->
-	<select id="selectDeliveryList" resultType="Map">
+	<!-- payment 안에 있는 주문목록 -->
+	<select id="selectOrderListByPayment" resultType="Map">
 		select 
 			o.payment_no paymentNo,
 			o.orders_no ordersNo,
-		    o.goods_no goodsNo,
-		    o.orders_amount ordersAmount,
-		    g.goods_title goodsTitle,
-		    g.goods_memo goodsMemo,
-		    g.goods_price * o.orders_amount totalPrice,
-		    gf.goods_file_name goodsFileName,
-		    gf.goods_file_ext goodsFileExt
+			o.goods_no goodsNo,
+			  gf.goods_file_name goodsFileName,
+			gf.goods_file_ext goodsFileExt,
+			g.goods_title goodsTitle,
+			g.goods_memo goodsMemo,
+			o.orders_amount ordersAmount,
+			g.goods_price * o.orders_amount totalPrice,
+			p.payment_state paymentState
 		from orders o
 		inner join goods g on o.goods_no = g.goods_no
+		inner join payment p on o.payment_no = p.payment_no
 		left join (select  
 						gf.goods_file_name,
 						gf.goods_file_ext, 
 						gf.goods_no
 					from goods_file gf
-		            limit 1) gf on gf.goods_no = o.goods_no
+					limit 1) gf on gf.goods_no = o.goods_no
 		where o.payment_no = #{paymentNo}
 	</select>
 </mapper>

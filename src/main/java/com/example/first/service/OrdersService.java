@@ -20,8 +20,8 @@ public class OrdersService {
 		return ordersMapper.selectOrdersList(customerMail);
 	}
 	
-	public List<Map<String,Object>> getSelectDeliveryList(int paymentNo){
-		return ordersMapper.selectDeliveryList(paymentNo);
+	public List<Map<String,Object>> getSelectOrderListByPayment(int paymentNo){
+		return ordersMapper.selectOrderListByPayment(paymentNo);
 	}
 	
 	

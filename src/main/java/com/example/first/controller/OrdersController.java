@@ -26,7 +26,7 @@ public class OrdersController {
 	// payment 안에 있는 리스트
 	@GetMapping("/customer/deliveryList")
 	public String deliveryList(Model model,@RequestParam int paymentNo) {
-		List<Map<String, Object>> deliveryList = ordersService.getSelectDeliveryList(paymentNo);
+		List<Map<String, Object>> deliveryList = ordersService.getSelectOrderListByPayment(paymentNo);
 		model.addAttribute("deliveryList",deliveryList);
 		return "customer/deliveryList";
 	}

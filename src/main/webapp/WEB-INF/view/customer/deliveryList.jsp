@@ -11,6 +11,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-${deliveryList}
+<table class="table">
+	<tr>
+		<td>paymentNo</td>
+		<td>ordersNo</td>
+		<td>goodsNo</td>
+		<td>goodsFileName.goodsFileExt</td>
+		<td>goodsTitle</td>
+		<td>goodsMemo</td>
+		<td>ordersAmount</td>
+		<td>totalPrice</td>
+		<td>후기 작성</td>
+	</tr>
+	<c:forEach items="${deliveryList}" var="d">
+		<tr>
+			<td>${d.paymentNo}</td>
+			<td>${d.ordersNo}</td>
+			<td>${d.goodsNo}</td>
+			<td><img src="${pageContext.request.contextPath}/upload/${d.goodsFileName}.${d.goodsFileExt}" width="100" height="100"></td>
+			<td>${d.goodsTitle}</td>
+			<td>${d.goodsMemo}</td>
+			<td>${d.ordersAmount}</td>
+			<td>${d.totalPrice}</td>
+			<td>
+				<c:if test="${d.paymentState == '결제완료'}">
+					<a href="${pageContext.request.contextPath}/customer/reviews?ordersNo=${d.ordersNo}">후기 작성</a>				
+				</c:if>
+			
+			</td>
+		</tr>
+	</c:forEach>
+</table>
 </body>
 </html>
