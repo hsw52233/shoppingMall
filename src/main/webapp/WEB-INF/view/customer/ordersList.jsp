@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>orderList</h1>
+<h1>배송 상태</h1>
 	<table class="table table-bordered">
 		<tr>
 			<td>paymentNo</td>
@@ -19,6 +19,7 @@
 			<td>paymentMethod</td>
 			<td>addressDetail</td>
 			<td>paymentState</td>
+			<td>상품목록</td>
 		</tr>
 		<c:forEach items="${orderList}" var="o">
 			<tr>
@@ -27,16 +28,18 @@
 				<td>${o.paymentPrice}</td>
 				<td>${o.paymentMethod}</td>
 				<td>${o.addressDetail}</td>
-				<td>${o.paymentState}</td>
 				<td>
 					<c:if test="${o.paymentState == '배송중' }">
-					<a href="${pageContext.request.contextPath}/customer/deliveryList?paymentNo=${o.paymentNo}">
+					<a href="${pageContext.request.contextPath}/customer/paymentComplete?paymentNo=${o.paymentNo}">
 						${o.paymentState}<!-- 배송중일때 배송완료로 바꾸면서 페이지 이동 -->
 					</a>
 					</c:if>
 					<c:if test="${o.paymentState == '결제완료' || o.paymentState == '배송완료'}">
 						${o.paymentState}
 					</c:if>
+				</td>
+				<td>
+					<a href="${pageContext.request.contextPath}/customer/deliveryList?paymentNo=${o.paymentNo}">상품 목록</a>
 				</td>
 			</tr>
 		</c:forEach>

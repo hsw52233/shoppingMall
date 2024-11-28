@@ -63,4 +63,11 @@ public class PaymentService {
 			return;
 		}
 	}
+	// paymentState 변경
+	public int getUpdatePaymentSate(int paymentNo, String paymentState) {
+		Payment payment = new Payment();
+		payment.setPaymentNo(paymentNo);
+		payment.setPaymentState(paymentState);
+		return paymentMapper.updatePaymentState(payment);
+	}
 }

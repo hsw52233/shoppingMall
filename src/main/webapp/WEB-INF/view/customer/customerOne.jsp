@@ -61,7 +61,7 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/customer/addressList?customerMail=${customerMail}">배송지 목록</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/ordersList?customerMail=${customerMail}">주문 내역</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/customer/ordersList?customerMail=${customerMail}">주문목록</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/customer/cartList?customerMail=${customerMail}">장바구니</a>
