@@ -16,6 +16,14 @@ public class StaffService {
 	@Autowired StaffMapper staffMapper;
 	
 	
+	public Staff getStaffNo(int staffNo) {
+		return staffMapper.getStaffNo(staffNo);
+	}
+	
+	public List<Staff> profile(){
+		return staffMapper.profile();
+	}
+	
 	public int staffAdd(Staff staff) {
 		return staffMapper.staffAdd(staff);
 	}

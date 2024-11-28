@@ -11,6 +11,8 @@ import com.example.first.vo.Goods;
 public interface GoodsMapper {
 	
 	
+	
+	
 	int goodsModifyActive(Goods goods);
 	
 	//관리자 상품 수정
@@ -36,9 +38,10 @@ public interface GoodsMapper {
 	
 	// 굿즈 상세정보
 	public Map<String,Object> selectGoodsOne(int goodsNo);
-
+	
 	public List<Map<String, Object>> selectGoodsListByCategory(Map<String,Object> paramMap);
+
+	public List<Map<String, Object>> selectGoodsList(Map<String,Object> paramMap);
 	
 	public int goodsLastPage(int categoryNo);
-
 }

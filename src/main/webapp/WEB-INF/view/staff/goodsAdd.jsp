@@ -20,9 +20,11 @@
 		<td><input type = "text" name="goodsMemo"></td>
 		<td>goodsPrice</td>
 		<td><input type = "text" name="goodsPrice"></td>
+		
+		
 		</table>
 		<button type="submit">add goods</button>
-		</form>
+		
 	</div>
 
 

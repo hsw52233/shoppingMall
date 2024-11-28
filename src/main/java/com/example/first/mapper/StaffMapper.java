@@ -9,6 +9,10 @@ import com.example.first.vo.Staff;
 @Mapper
 public interface StaffMapper {
 	
+	Staff getStaffNo(int staffNo);
+	
+	List<Staff> profile();
+	
 	int staffAdd(Staff staff);
 	
 	Staff login(Staff staff);

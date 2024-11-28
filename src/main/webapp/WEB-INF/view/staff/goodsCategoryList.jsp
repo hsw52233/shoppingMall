@@ -17,37 +17,29 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>CATEGORY LIST</h1>
+			<h1>GoodsCategory LIST</h1>
 			
 			<table class="table table-striped">
 				<tr>
+					<td>goodsNo</td>
 					<td>categoryNo</td>
-					<td>categoryTitle</td>
 					<td>updateDate</td>
-					<td>createDate</td>
-					<td>카테고리 수정</td>
-					<td>카테고리 삭제</td>
-								
+					<td>createDate</td>		
+					<td>삭제</td>		
 				</tr>
-				<c:forEach var ="s" items="${categoryList}">
+				
+				
+				<c:forEach var ="s" items="${goodsCategoryList}">
 					<tr>
+						<td>${s.goodsNo}</td>
 						<td>${s.categoryNo}</td>
-						<td>${s.categoryTitle}</td>
 						<td>${s.updateDate}</td>
 						<td>${s.createDate}</td>
-						<td><a href="${pageContext.request.contextPath}/staff/categoryModify?categoryNo=${s.categoryNo}">카테고리 수정</a></td>
-				
-			
-						<td><a href="${pageContext.request.contextPath}/staff/removeCategory?categoryNo=${s.categoryNo}">카테고리 삭제</a></td>
-						
-						
-						<td>
-							
-						</td>
+						<td><a href="${pageContext.request.contextPath}/staff/removeGoodsCategory?goodsNo=${s.goodsNo}">상품카테고리 삭제</a></td>
 					</tr>
 				</c:forEach>
 			</table>
-			<td><a href="${pageContext.request.contextPath}/staff/categoryAdd">카테고리 추가</a></td>
+			<td><a href="${pageContext.request.contextPath}/staff/goodsCategoryAdd">상품 카테고리 추가</a></td>
 		</div>
 		
 	</div>

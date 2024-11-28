@@ -16,6 +16,9 @@ public class OrdersController {
 
 	@Autowired
 	private OrdersService ordersService;
+	
+	
+	
 	// 이동윤 : 주문내역 리스트
 	@GetMapping("/customer/ordersList")
 	public String ordersList(Model model, @RequestParam String customerMail) {
