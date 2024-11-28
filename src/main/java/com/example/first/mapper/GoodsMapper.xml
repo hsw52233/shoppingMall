@@ -41,9 +41,11 @@
 
 	<!-- 하상우 ) 관리자 상품 추가 -->
 	<insert id="goodsAdd" parameterType="com.example.first.vo.Goods">
+		<selectKey resultType="int" keyProperty="goodsNo" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	
-	
-		INSERT INTO goods(goods_title, goods_memo, goods_price, goods_state) VALUES(#{goodsTitle}, #{goodsMemo}, #{goodsPrice}, '재고있음')
+		INSERT INTO goods(goods_title, goods_memo, goods_price, goods_state) VALUES(#{goodsTitle}, #{goodsMemo}, #{goodsPrice}, #{goodsState})
 	
 	</insert>
 
@@ -66,7 +68,7 @@
 			update_date updateDate,
 			create_date createDate
 		FROM goods
-	
+		ORDER BY goodsNo DESC
 	</select>
 
 

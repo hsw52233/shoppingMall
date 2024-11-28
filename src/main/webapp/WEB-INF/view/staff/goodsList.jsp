@@ -35,7 +35,7 @@
 				<c:forEach var="s" items="${goodsList}">
     <tr>
         <td>${s.goodsNo}</td>
-        <td><a href="${pageContext.request.contextPath}/staff/goodsOne">${s.goodsTitle}</a></td>
+        <td><a href="${pageContext.request.contextPath}/staff/goodsOne?goodsNo=${s.goodsNo}">${s.goodsTitle}</a></td>
         <td>${s.goodsMemo}</td>
         <td>${s.goodsPrice}</td>
         <td>
