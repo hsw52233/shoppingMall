@@ -1,6 +1,5 @@
 package com.example.first.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.service.AddressService;
 import com.example.first.service.CustomerService;
+import com.example.first.service.GoodsService;
 import com.example.first.vo.Address;
 import com.example.first.vo.Customer;
+import com.example.first.vo.Page;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,9 @@ public class CustomerController {
 	
 	@Autowired
 	AddressService addressService;
+	
+	@Autowired
+	GoodsService goodsService;
 	
 	
 	//하상우 ) 관리자 회원 상세 정보 조회
@@ -66,7 +70,6 @@ public class CustomerController {
 		
 		return "staff/customerList";
 	}
-	
 
 	// customer/log(로그아웃)
 	@GetMapping("/common/logout")
@@ -74,7 +77,7 @@ public class CustomerController {
 		session.invalidate(); // 현재 세션정보를 종료시킴으로써 로그아웃처리시킴
 		log.debug("로그아웃 성공");
 
-		return "redirect:/common/login"; // 로그아웃했으니 다시 로그인페이지로 리다이렉트
+		return "redirect:/common/home"; // 로그아웃했으니 다시 로그인페이지로 리다이렉트
 	}
 
 	// customer/register(회원가입)
@@ -104,7 +107,20 @@ public class CustomerController {
 
 	// customer/home (메인페이지)
 	@GetMapping("/common/home")
-	public String home() {
+	public String home(Model model, @RequestParam(defaultValue = "0")int categoryNo, Page page) {
+		goodsService.getGoodsListByCategory(categoryNo, page);
+		List<Map<String, Object>> goodsList = goodsService.getGoodsListByCategory(categoryNo, page);
+		int lastPage = goodsService.getLastPage(categoryNo,page);
+		
+		log.debug("lastPage : "+lastPage);
+		log.debug("beginRow : "+page.getBeginRow());
+		model.addAttribute("categoryNo",categoryNo);
+		model.addAttribute("currentPage",page.getCurrentPage());
+		model.addAttribute("startPage",page.getStartPage());
+		model.addAttribute("numPerPage",page.getNumPerPage());
+		model.addAttribute("endPage",page.getEndPage());
+		model.addAttribute("lastPage",lastPage);
+		model.addAttribute("goodsList",goodsList);
 		return "common/home";
 	}
 
@@ -129,7 +145,7 @@ public class CustomerController {
 		}
 		session.setAttribute("customerMail", customerMail);
 
-		return "common/home";
+		return "redirect:/common/home";
 	}
 
 	// customer/customerOne (마이페이지)

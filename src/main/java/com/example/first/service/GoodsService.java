@@ -63,14 +63,14 @@ public class GoodsService {
 		return goodsMapper.selectGoodsOne(goodsNo);
 	}
 
-	// Author : 이동윤 상품리스트
-	public List<Map<String,Object>> getGoodsList(int categoryNo ,Page page) {
+	// Author : 이동윤 카테고리 별 상품리스트
+	public List<Map<String,Object>> getGoodsListByCategory(int categoryNo ,Page page) {
 		Map<String,Object> paramMap = new HashMap<>();
 		paramMap.put("categoryNo", categoryNo);
 		paramMap.put("beginRow", page.getBeginRow());
 		paramMap.put("rowPerPage", page.getRowPerPage());
 		
-		return goodsMapper.selectGoodsList(paramMap);
+		return goodsMapper.selectGoodsListByCategory(paramMap);
 	}
 	// Author : 이동윤 상품 라스트페이지
 	public int getLastPage (int categoryNo, Page page) {
@@ -78,6 +78,8 @@ public class GoodsService {
 		int lastpage = page.getLastPage(totalRow);
 		return lastpage; 
 	}
+
+
 
 	
 

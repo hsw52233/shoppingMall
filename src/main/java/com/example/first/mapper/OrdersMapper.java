@@ -12,4 +12,6 @@ public interface OrdersMapper {
 	public List<Map<String,Object>> selectOrdersList(String customerMail);
 
 	public int insertOrder(Orders orders);
+	
+	public List<Map<String,Object>> selectDeliveryList(int paymentNo);
 }

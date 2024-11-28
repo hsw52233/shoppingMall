@@ -126,7 +126,7 @@ public class GoodsController {
 	// Author : 이동윤 상품리스트
 	@GetMapping("/common/goodsList")
 	public String getMethodName(Model model, Page page, @RequestParam(defaultValue = "0") int categoryNo) {
-		List<Map<String, Object>> goodsList = goodsService.getGoodsList(categoryNo, page);
+		List<Map<String, Object>> goodsList = goodsService.getGoodsListByCategory(categoryNo, page);
 		int lastPage = goodsService.getLastPage(categoryNo,page);
 		
 		log.debug("lastPage : "+lastPage);
