@@ -13,10 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.first.mapper.BoardMapper;
+import com.example.first.mapper.CategoryMapper;
+import com.example.first.mapper.GoodsCategoryMapper;
 import com.example.first.mapper.GoodsFileMapper;
 import com.example.first.mapper.GoodsMapper;
-import com.example.first.vo.Board;
+import com.example.first.vo.Category;
 import com.example.first.vo.Goods;
+import com.example.first.vo.GoodsCategory;
 import com.example.first.vo.GoodsFile;
 import com.example.first.vo.GoodsForm;
 import com.example.first.vo.Page;
@@ -36,6 +39,12 @@ public class GoodsService {
 
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	@Autowired
+	private CategoryMapper categoryMapper;
+	
+	@Autowired
+	private GoodsCategoryMapper goodsCategoryMapper;
 
 	// 하상우) 재고 활성화
 
@@ -56,6 +65,7 @@ public class GoodsService {
 	// 하상우 ) 관리자 상품 추가
 
 	public void goodsAdd(GoodsForm goodsForm, String path) {
+		// goodsForm 데이터 -> goods 로 이동
 		Goods goods = new Goods();
 		goods.setGoodsNo(goodsForm.getGoodsNo());
 		goods.setGoodsTitle(goodsForm.getGoodsTitle());
@@ -65,7 +75,12 @@ public class GoodsService {
 		int goodsRow = goodsMapper.goodsAdd(goods);
 		int goodsNo = goods.getGoodsNo();
 		log.debug("goodsNo : " + goodsNo);
-
+		// goodsForm 데이터 에서 categoryNo 받아오기
+		GoodsCategory goodsCategory = new GoodsCategory();
+		goodsCategory.setGoodsNo(goodsNo);
+		goodsCategory.setCategoryNo(goodsForm.getCategoryNo());
+		// goodsCateogry 추가
+		goodsCategoryMapper.insertGoodsCategory(goodsCategory);
 		if (goodsRow == 1 && goodsForm.getGoodsFile() != null) {
 			List<MultipartFile> list = goodsForm.getGoodsFile();
 			for (MultipartFile file : list) {
@@ -103,6 +118,8 @@ public class GoodsService {
 		// 상품 이미지 데이터 삭제
 		List<GoodsFile> fileList = goodsFileMapper.selectGoodsFileListByGoods(goodsNo);
 		System.out.println("fileList : "+ fileList.toString());
+		// 상품 카테고리 삭제
+		goodsCategoryMapper.remove(goodsNo);
 		// 상품 파일 삭제
 		int row = goodsFileMapper.deleteGoodsFileByGoods(goodsNo);
 		if (row == 1 && fileList != null && fileList.size() > 0) {
@@ -119,7 +136,7 @@ public class GoodsService {
 
 	// 하상우) 관리자 페이지에서 상품 리스트 조회
 
-	public List<Goods> getGoodsList() {
+	public List<Map<String,Object>> getGoodsList() {
 		return goodsMapper.getGoodsList();
 	}
 

@@ -26,6 +26,7 @@
 					<td>goodsMemo</td>
 					<td>goodsPrice</td>
 					<td>goodsState</td>
+					<td>categoryTitle</td>
 					<td>updateDate</td>
 					<td>createDate</td>	
 					<td>상품 수정</td>	
@@ -44,6 +45,7 @@
                 <c:if test="${s.goodsState == '재고없음'}">재고있음</c:if>
             </a>
         </td>
+        <td>${s.categoryTitle}</td>
         <td>${s.updateDate}</td>
         <td>${s.createDate}</td>
         <td><a href="${pageContext.request.contextPath}/staff/goodsModify?goodsNo=${s.goodsNo}">상품 수정</a></td>
