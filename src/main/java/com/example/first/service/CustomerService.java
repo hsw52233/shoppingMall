@@ -7,14 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.first.mapper.AddressMapper;
+import com.example.first.mapper.CartMapper;
 import com.example.first.mapper.CustomerMapper;
 import com.example.first.vo.Customer;
 
 @Service
 @Transactional
 public class CustomerService {
+	
+	@Autowired
+	CartMapper cartMapper;
+	
 	@Autowired
 	CustomerMapper customerMapper;
+	
+	@Autowired
+	private AddressMapper addressMapper;
 	
 	// 하상우) 관리자 회원 상세 정보
 	
@@ -27,6 +36,11 @@ public class CustomerService {
 	}
 	
 	public int removeCustomer(String customerMail) {
+		
+		cartMapper.removeCart(customerMail);
+		
+		addressMapper.removeAddress(customerMail);
+		
 		return customerMapper.removeCustomer(customerMail);
 	}
 	

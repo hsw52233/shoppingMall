@@ -8,11 +8,17 @@ import org.springframework.stereotype.Service;
 
 import com.example.first.mapper.BoardMapper;
 import com.example.first.vo.Board;
+import com.example.first.vo.Orders;
 
 @Service
 public class BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	
+	public int remove(int ordersNo) {
+		return boardMapper.remove(ordersNo);
+	}
 	
 	// 이동윤 후기 추가
 	public int getInsertReviews(Board board) {

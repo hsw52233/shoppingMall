@@ -22,6 +22,14 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@GetMapping("/staff/removeReview")
+	public String removeReview(@RequestParam int ordersNo) {
+		
+		int deleteRow = boardService.remove(ordersNo);
+		
+		return "redirect:/staff/reviewList";
+	}
+	
 	@GetMapping("/customer/reviews")
 	public String reviews(Model model, @RequestParam int ordersNo, @RequestParam int paymentNo) {
 	

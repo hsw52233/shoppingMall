@@ -10,6 +10,8 @@ import com.example.first.vo.Address;
 @Mapper
 public interface AddressMapper {
 	
+	int removeAddress(String customerMail);
+	
 	Address getAddressByCustomerMail(String customerMail);
 	
 	

@@ -15,6 +15,10 @@ public class AddressService {
 	@Autowired
 	private AddressMapper addressMapper;
 	
+	public int removeAddress(String customerMail) {
+		return addressMapper.removeAddress(customerMail);
+	}
+	
 	public Address getAddressOne(String customerMail) {
         return addressMapper.getAddressByCustomerMail(customerMail);
     }

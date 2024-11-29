@@ -6,9 +6,12 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.first.vo.Board;
+import com.example.first.vo.Orders;
 
 @Mapper
 public interface BoardMapper {
+	
+	int remove(int ordersNo);
 
 	public int insertReviews(Board board);
 	
