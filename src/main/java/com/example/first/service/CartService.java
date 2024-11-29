@@ -18,6 +18,12 @@ public class CartService {
 	@Autowired
 	private CartMapper cartMapper;
 	
+	
+	public int removeCart(String customerMail) {
+		return cartMapper.removeCart(customerMail);
+	}
+	
+	
 	//Author : 이동윤
 	// 고객의 장바구니 리스트
 	public List<Map<String,Object>> getSelectCartList(String customerMail){

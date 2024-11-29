@@ -20,19 +20,19 @@
 			<table class="table">
 				<tr>
 					<td>staffId</td>
-					<td>${profile.staffId}</td>
+					<td>${loginStaff.staffId}</td>
 				</tr>
 				<tr>
 					<td>staffPw</td>
-					<td>${profile.staffPw}</td>
+					<td>${loginStaff.staffPw}</td>
 				</tr>
 				<tr>
 					<td>updateDate</td>
-					<td>${profile.updateDate}</td>
+					<td>${loginStaff.updateDate}</td>
 				</tr>
 				<tr>
 					<td>createDate</td>
-					<td>${profile.createDate}</td>
+					<td>${loginStaff.createDate}</td>
 				</tr>
 			</table>
 			<br>

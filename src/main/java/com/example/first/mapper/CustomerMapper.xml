@@ -46,9 +46,10 @@
 	<!-- 하상우) 관리자에서 회원 삭제 -->
 	
 	<delete id="removeCustomer" parameterType="com.example.first.vo.Customer">
+		
 		DELETE FROM
 			customer
-		WHERE customer_mail = #{customerMail}
+		WHERE customer_mail = #{customerMail};
 	
 	</delete>
 	

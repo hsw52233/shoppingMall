@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.CartMapper">
+
+
+	<delete id="removeCart" parameterType="com.example.first.vo.Cart">
+	
+		DELETE FROM cart
+			WHERE customer_mail = #{customerMail}
+	
+	</delete>
+
+
+
 	<!-- Author : 이동윤 고객장바구니 리스트 (개인별, 전체) -->
 	<select id="selectcartList" resultType="Map">
 		select 

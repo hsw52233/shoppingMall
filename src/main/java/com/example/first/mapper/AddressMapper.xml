@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.AddressMapper">
+
+
+	<delete id="removeAddress" parameterType="com.example.first.vo.Address">
+		DELETE FROM address WHERE customer_mail = #{customerMail}
+	
+	</delete>
 	
 	<!-- 하상우 ) 관리자 회원 상세 페이지  -->
 	

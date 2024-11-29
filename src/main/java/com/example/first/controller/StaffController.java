@@ -28,7 +28,7 @@ public class StaffController {
 	
 	// 로그인한 스태프 상세 조회
 	@GetMapping("/staff/profile")
-	public String staffOne(Model model, HttpSession session) {
+	public String staffOne(Model model,HttpSession session) {
 	
 		
 		List<Staff> profile = staffService.profile();
@@ -96,8 +96,6 @@ public class StaffController {
 		staff.setStaffId(staffId);
 		staff.setStaffPw(password);
 		
-		System.out.println(staff.getStaffId());
-		System.out.println(staff.getStaffPw());
 		
 		Staff loginStaff = staffService.login(staff);
 		System.out.println(loginStaff.getStaffId());

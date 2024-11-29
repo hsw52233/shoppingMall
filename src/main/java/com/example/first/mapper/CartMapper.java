@@ -10,6 +10,8 @@ import com.example.first.vo.Cart;
 @Mapper
 public interface CartMapper {
 	
+	int removeCart(String customerMail);
+	
 	// Author : 이동윤
 	public List<Map<String,Object>> selectcartList(String customerMail);
 	

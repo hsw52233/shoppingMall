@@ -23,6 +23,16 @@ public class AddressController {
 	@Autowired
 	private AddressService addressService;
 	
+	
+	@GetMapping("/customer/removeAddress")
+	public String removeAddress(@RequestParam String customerMail) {
+		
+		int deleteMail = addressService.removeAddress(customerMail);
+		
+		return "redirect:/customer/adressList";
+		
+	}
+	
 	@GetMapping("/customer/addressList")
 	public String selectAddressList(Model model,@RequestParam String customerMail) {
 		
