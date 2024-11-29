@@ -13,48 +13,66 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Styles -->
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-        .sidebar {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-right: 1px solid #ddd;
-        }
-        .sidebar .nav-link {
-            font-size: 16px;
-            color: #343a40;
-        }
-        .sidebar .nav-link.active {
-            font-weight: bold;
-        }
-        .profile-info {
-            margin-bottom: 30px;
-        }
-        .order-table th, .order-table td {
-            text-align: center;
-        }
-        .container {
-    display: flex;        /* Flexbox 사용 */
-    gap: 10px;            /* 요소 간 간격 */
+body {
+	font-family: 'Arial', sans-serif;
 }
 
 .sidebar {
-    width: 250px;         /* 사이드바 너비 */
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-right: 1px solid #ddd;
+}
+
+.sidebar .nav-link {
+	font-size: 16px;
+	color: #343a40;
+}
+
+.sidebar .nav-link.active {
+	font-weight: bold;
+}
+
+.profile-info {
+	margin-bottom: 30px;
+}
+
+.order-table th, .order-table td {
+	text-align: center;
+}
+
+.container {
+	display: flex; /* Flexbox 사용 */
+	gap: 10px; /* 요소 간 간격 */
+}
+
+.sidebar {
+	width: 250px; /* 사이드바 너비 */
 }
 
 .main-content {
-    flex-grow: 1;         /* 나머지 공간을 차지 */
+	flex-grow: 1; /* 나머지 공간을 차지 */
 }
-        
-    </style>
+
+.button-group a.btn-custom {
+    width: 100px; /* 버튼의 고정 너비 설정 */
+    margin-right: 10px; /* 버튼 간의 간격 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.button-group a.btn-custom:last-child {
+    margin-right: 0; /* 마지막 버튼의 오른쪽 여백 제거 */
+}
+</style>
 </head>
 <body>
    <header class="bg-dark text-white py-3">
     <div class="container d-flex justify-content-between">
         <h1 class="h4">카테고리 페이지</h1>
         <div class="d-flex align-items-center">
-            <a href="#" class="btn btn-outline-light btn-sm">로그아웃</a>
+           <div class="button-group">
+    <a href="${pageContext.request.contextPath}/staff/main" class="btn btn-outline-light btn-sm btn-custom">home</a>
+    <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light btn-sm btn-custom">로그아웃</a>
+</div>
         </div>
     </div>
 </header>
@@ -64,7 +82,7 @@
         <!-- Sidebar -->
         <div class="col-md-3">
             <div class="sidebar">
-                <h5>관리자 페이지</h5>
+               
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="${pageContext.request.contextPath}/staff/profile">${loginStaff.staffId}님</a>
@@ -93,8 +111,7 @@
 
         <!-- Main Content -->
         <div class="col-md-9">
-            <h1>CATEGORY LIST</h1>
-            
+           
             <!-- Table for Category List -->
             <table class="table table-striped">
                 <tr>
@@ -112,14 +129,14 @@
                         <td>${s.categoryTitle}</td>
                         <td>${s.updateDate}</td>
                         <td>${s.createDate}</td>
-                        <td><a href="${pageContext.request.contextPath}/staff/categoryModify?categoryNo=${s.categoryNo}">카테고리 수정</a></td>
-                        <td><a href="${pageContext.request.contextPath}/staff/removeCategory?categoryNo=${s.categoryNo}">카테고리 삭제</a></td>
+                        <td><a href="${pageContext.request.contextPath}/staff/categoryModify?categoryNo=${s.categoryNo}" class="btn btn-outline-primary">수정</a></td>
+                        <td><a href="${pageContext.request.contextPath}/staff/removeCategory?categoryNo=${s.categoryNo}" class="btn btn-outline-primary">삭제</a></td>
                     </tr>
                 </c:forEach>
             </table>
 
             <!-- Link to Add Category -->
-            <a href="${pageContext.request.contextPath}/staff/categoryAdd">카테고리 추가</a>
+            <a href="${pageContext.request.contextPath}/staff/categoryAdd" class="btn btn-outline-primary">카테고리 추가</a>
         </div>
     </div>
 </div>

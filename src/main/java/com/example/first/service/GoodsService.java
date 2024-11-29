@@ -36,6 +36,16 @@ public class GoodsService {
 
 	@Autowired
 	private BoardMapper boardMapper;
+	
+	
+	public int getLastPage(int rowPerPage) {
+		int count = goodsMapper.selectStaffCount();
+		int lastPage = count / rowPerPage;
+		if(count % rowPerPage != 0) {
+			lastPage += 1;
+		}
+		return lastPage;
+	}
 
 	// 하상우) 재고 활성화
 

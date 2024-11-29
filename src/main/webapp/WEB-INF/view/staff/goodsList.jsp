@@ -46,6 +46,16 @@
 .main-content {
     flex-grow: 1;         /* 나머지 공간을 차지 */
 }
+
+.button-group a.btn-custom {
+    width: 100px; /* 버튼의 고정 너비 설정 */
+    margin-right: 10px; /* 버튼 간의 간격 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.button-group a.btn-custom:last-child {
+    margin-right: 0; /* 마지막 버튼의 오른쪽 여백 제거 */
+}
         
     </style>
 </head>
@@ -54,7 +64,10 @@
     <div class="container d-flex justify-content-between">
         <h1 class="h4">상품 페이지</h1>
         <div class="d-flex align-items-center">
-            <a href="#" class="btn btn-outline-light btn-sm">로그아웃</a>
+           <div class="button-group">
+    <a href="${pageContext.request.contextPath}/staff/main" class="btn btn-outline-light btn-sm btn-custom">home</a>
+    <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light btn-sm btn-custom">로그아웃</a>
+</div>
         </div>
     </div>
 </header>
@@ -64,7 +77,7 @@
         <!-- Sidebar -->
         <div class="col-md-3">
             <div class="sidebar">
-                <h5>관리자 페이지</h5>
+                
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="${pageContext.request.contextPath}/staff/profile">${loginStaff.staffId}님</a>
@@ -119,12 +132,12 @@
                         </td>
                         <td>${s.updateDate}</td>
                         <td>${s.createDate}</td>
-                        <td><button class="btn btn-primary"><a href="${pageContext.request.contextPath}/staff/goodsModify?goodsNo=${s.goodsNo}">상품 수정</a></button></td>
-                        <td><a href="${pageContext.request.contextPath}/staff/removegoods?goodsNo=${s.goodsNo}">상품 삭제</a></td>
+                        <td><a href="${pageContext.request.contextPath}/staff/goodsModify?goodsNo=${s.goodsNo}" class="btn btn-outline-primary">상품 수정</a></td>
+                        <td><a href="${pageContext.request.contextPath}/staff/removegoods?goodsNo=${s.goodsNo}" class="btn btn-outline-primary">상품 삭제</a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <a href="${pageContext.request.contextPath}/staff/goodsAdd">상품 추가</a>
+            <a href="${pageContext.request.contextPath}/staff/goodsAdd" class="btn btn-outline-primary">상품 추가</a>
         </div>
     </div>
 </div>

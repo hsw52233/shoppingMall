@@ -13,6 +13,8 @@ public interface GoodsMapper {
 	
 	
 	
+	int selectStaffCount();
+	
 	int goodsModifyActive(Goods goods);
 	
 	//관리자 상품 수정

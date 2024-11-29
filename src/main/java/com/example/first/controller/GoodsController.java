@@ -1,5 +1,6 @@
 package com.example.first.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -116,10 +117,19 @@ public class GoodsController {
 	
 	//하상우 ) 관리자 페이지 상품 리스트
 	@GetMapping("/staff/goodsList")
-	public String goodsList(Model model) {
+	public String goodsList(Model model, @RequestParam(defaultValue = "1") int currentPage
+			, @RequestParam(defaultValue = "10") int rowPerPage) {
 		
+		Map<String, Object> map = new HashMap<>();
+		int beginRow = (currentPage-1) * rowPerPage;
+		map.put("beginRow", beginRow);
+		map.put("rowPerPage", rowPerPage);
+		
+		int lastPage = goodsService.getLastPage(rowPerPage);
 		List<Goods> goodsList = goodsService.getGoodsList();
 		model.addAttribute("goodsList", goodsList);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", lastPage);
 		
 		return "staff/goodsList";
 		
