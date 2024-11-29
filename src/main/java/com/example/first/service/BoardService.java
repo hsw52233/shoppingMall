@@ -15,6 +15,10 @@ public class BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
 	
+
+	public List<Board> getReviewList(){
+		return boardMapper.getReviewList();
+	}
 	
 	public int remove(int ordersNo) {
 		return boardMapper.remove(ordersNo);

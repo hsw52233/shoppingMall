@@ -11,6 +11,8 @@ import com.example.first.vo.Orders;
 @Mapper
 public interface BoardMapper {
 	
+	List<Board> getReviewList();
+	
 	int remove(int ordersNo);
 
 	public int insertReviews(Board board);

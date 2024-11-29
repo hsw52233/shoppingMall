@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.BoardMapper">
 
+
+	<select id="getReviewList" parameterType="com.example.first.vo.Board">
+		SELECT
+			orders_no ordersNo,
+			board_content boardContent,
+			update_date updateDate,
+			create_date createDate
+		FROM board
+	</select>
+
+
 	<delete id="remove" parameterType="com.example.first.vo.Board">
 	
 		DELETE FROM board WHERE orders_no = #{ordersNo}
