@@ -129,14 +129,14 @@ public class GoodsService {
 	}
 
 	// Author : 이동윤 카테고리 별 상품리스트
-	public List<Map<String, Object>> getGoodsListByCategory(int categoryNo, Page page, String searchTitle) {
+	public List<Map<String, Object>> getSelectGoodsList(int categoryNo, Page page, String searchTitle) {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("categoryNo", categoryNo);
 		paramMap.put("searchTitle", searchTitle);
 		paramMap.put("beginRow", page.getBeginRow());
 		paramMap.put("rowPerPage", page.getRowPerPage());
 
-		return goodsMapper.selectGoodsListByCategory(paramMap);
+		return goodsMapper.selectGoodsList(paramMap);
 	}
 
 	// Author : 이동윤 상품 라스트페이지

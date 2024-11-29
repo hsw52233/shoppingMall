@@ -25,6 +25,8 @@
 			재고있음 : <input name="goodsState" id="goodsState" type="radio" value="재고있음">
 			재고없음 : <input name="goodsState" id="goodsState" type="radio" value="재고없음">
 		</td>
+		<td>goodsCategory</td>
+		<td><input type = "number" name="goodsPrice" id="goodsPrice"></td>
 		</table>
 	</div>
 		<div class="mb-3">
