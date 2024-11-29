@@ -68,7 +68,7 @@
 		where customer_mail = #{customerMail}
 	</delete>
 	
-	<delete id="deleteCartByGoodsNo" parameterType="int">
+	<delete id="deleteCartByGoods">
     delete 
     from cart
     where goods_no = #{goodsNo}

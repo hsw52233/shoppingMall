@@ -121,7 +121,7 @@ public class GoodsService {
 		// 상품 댓글 전체 삭제
 		boardMapper.deleteReviewsByGoods(goodsNo);
 		// 해당 상품이 장바구니에 담겨있으면 삭제
-		cartMapper.deleteCartByGoodsNo(goodsNo);
+		cartMapper.deleteCartByGoods(goodsNo);
 		// 해당 상품 주문 목록 삭제
 		ordersMapper.deleteOrdersListByGoods(goodsNo);
 		// 상품 이미지 데이터 삭제
