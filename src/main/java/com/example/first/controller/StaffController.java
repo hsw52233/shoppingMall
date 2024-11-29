@@ -28,10 +28,16 @@ public class StaffController {
 	
 	// 로그인한 스태프 상세 조회
 	@GetMapping("/staff/profile")
-	public String staffOne(Model model,HttpSession session) {
+	public String staffOne(Model model, HttpSession session) {
 	
+		Staff staff = (Staff) session.getAttribute("loginStaff");
 		
-		List<Staff> profile = staffService.profile();
+		String loginStaffId = staff.getStaffId(); 
+		log.debug("loginStaffId : "+loginStaffId);
+		//String loginStaffId = staff.getStaffId(); 
+		
+		List<Staff> profile = staffService.profile(loginStaffId);
+		log.debug("profile : "+profile.toString());
 		model.addAttribute("profile", profile);
 		return "staff/profile";
 	}
@@ -89,7 +95,8 @@ public class StaffController {
 	@PostMapping("/staff/login")
 	public String staffLogin(Model model, HttpSession session,
 				@RequestParam(name = "staffId") String staffId
-				,@RequestParam(name = "password") String password) {
+				,@RequestParam(name = "password") String password
+				) {
 		
 		
 		Staff staff = new Staff();
