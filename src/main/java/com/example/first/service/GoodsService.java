@@ -42,6 +42,10 @@ public class GoodsService {
 	@Autowired
 	private BoardMapper boardMapper;
 	
+
+	
+	
+
 	@Autowired
 	private OrdersMapper ordersMapper; 
 	
@@ -49,7 +53,7 @@ public class GoodsService {
 	private GoodsCategoryMapper goodsCategoryMapper;
 	
 	@Autowired
-	private CartMapper cartMapper;
+  private CartMapper cartMapper;
 
 	// 하상우) 재고 활성화
 

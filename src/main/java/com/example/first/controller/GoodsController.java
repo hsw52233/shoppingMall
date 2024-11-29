@@ -1,5 +1,6 @@
 package com.example.first.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -120,9 +121,11 @@ public class GoodsController {
 	//하상우 ) 관리자 페이지 상품 리스트
 	@GetMapping("/staff/goodsList")
 	public String goodsList(Model model) {
-		
+
 		List<Map<String,Object>> goodsList = goodsService.getGoodsList();
+
 		model.addAttribute("goodsList", goodsList);
+		
 		
 		return "staff/goodsList";
 		

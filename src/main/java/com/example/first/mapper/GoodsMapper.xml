@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.GoodsMapper">
 
+	<select id="selectStaffCount"
+			resultType="int">
+		SELECT COUNT(*) FROM staff
+	</select>
+
 
 	<!-- 하상우 ) '재고있음' 활셩화 -->
 	<update id="goodsModifyActive"

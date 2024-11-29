@@ -26,6 +26,11 @@ public class StaffController {
 	@Autowired StaffService staffService;
 	
 	
+	@GetMapping("/staff/main")
+	public String staffMain() {
+	    return "staff/staffMain"; // staffMain.jsp로 이동
+	}
+	
 	// 로그인한 스태프 상세 조회
 	@GetMapping("/staff/profile")
 	public String staffOne(Model model, HttpSession session) {
@@ -87,10 +92,11 @@ public class StaffController {
 	
 	@GetMapping("/staff/login")
 	public String staffLogin() {
-		
-		
 		return "staff/login";
 	}
+	
+	
+	
 	
 	@PostMapping("/staff/login")
 	public String staffLogin(Model model, HttpSession session,
@@ -112,12 +118,10 @@ public class StaffController {
 			System.out.println("실패");
 			return "staff/login";
 		}
+	
 		session.setAttribute("loginStaff", loginStaff);
 		System.out.println("로그인성공");
-		
-		
-		
-		
+				
 		return "staff/staffMain";
 	}
 	

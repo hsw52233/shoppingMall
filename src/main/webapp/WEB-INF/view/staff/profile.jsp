@@ -2,21 +2,72 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+        .sidebar .nav-link {
+            font-size: 16px;
+            color: #343a40;
+        }
+        .sidebar .nav-link.active {
+            font-weight: bold;
+        }
+        .profile-info {
+            margin-bottom: 30px;
+        }
+        .order-table th, .order-table td {
+            text-align: center;
+        }
+        .container {
+    display: flex;        /* Flexbox 사용 */
+    gap: 10px;            /* 요소 간 간격 */
+}
 
-<meta charset="UTF-8">
-<title>Insert title here</title>
+.sidebar {
+    width: 250px;         /* 사이드바 너비 */
+}
+
+.main-content {
+    flex-grow: 1;         /* 나머지 공간을 차지 */
+}
+
+.button-group a.btn-custom {
+    width: 100px; /* 버튼의 고정 너비 설정 */
+    margin-right: 10px; /* 버튼 간의 간격 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.button-group a.btn-custom:last-child {
+    margin-right: 0; /* 마지막 버튼의 오른쪽 여백 제거 */
+}
+        
+    </style>
 </head>
 <body >
  <header class="bg-dark text-white py-3">
     <div class="container d-flex justify-content-between">
         <h1 class="h4">${loginStaff.staffId}님</h1>
         <div class="d-flex align-items-center">
-            <a href="#" class="btn btn-outline-light btn-sm">로그아웃</a>
+            <div class="button-group">
+    <a href="${pageContext.request.contextPath}/staff/main" class="btn btn-outline-light btn-sm btn-custom">home</a>
+    <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light btn-sm btn-custom">로그아웃</a>
+</div>
         </div>
     </div>
 </header>
@@ -25,7 +76,7 @@
             <!-- Sidebar -->
             <div class="col-md-3">
                 <div class="sidebar">
-                    <h5>관리자 페이지</h5>
+                    
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="${pageContext.request.contextPath}/staff/profile">${loginStaff.staffId}님</a>
@@ -54,7 +105,7 @@
 
             <!-- Main Content -->
             <div class="col-md-9">
-                <h1>STAFF ONE</h1>
+               
                 <div>
                     <table class="table">
                         <c:forEach items="${profile}" var="p">
@@ -77,7 +128,6 @@
                         </c:forEach>
                     </table>
                     <br>
-                    <a href="${pageContext.request.contextPath}/logout">로그아웃</a>
                 </div>
             </div>
         </div>

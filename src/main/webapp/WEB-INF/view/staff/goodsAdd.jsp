@@ -1,51 +1,158 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+      body {
+	font-family: 'Arial', sans-serif;
+}
+
+.sidebar {
+	background-color: #f8f9fa;
+	padding: 20px;
+	border-right: 1px solid #ddd;
+}
+
+.sidebar .nav-link {
+	font-size: 16px;
+	color: #343a40;
+}
+
+.sidebar .nav-link.active {
+	font-weight: bold;
+}
+
+.profile-info {
+	margin-bottom: 30px;
+}
+
+.order-table th, .order-table td {
+	text-align: center;
+}
+
+.container {
+	display: flex; /* Flexbox 사용 */
+	gap: 10px; /* 요소 간 간격 */
+}
+
+.sidebar {
+	width: 250px; /* 사이드바 너비 */
+}
+
+.main-content {
+	flex-grow: 1; /* 나머지 공간을 차지 */
+}
+
+.button-group a.btn-custom {
+    width: 100px; /* 버튼의 고정 너비 설정 */
+    margin-right: 10px; /* 버튼 간의 간격 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.button-group a.btn-custom:last-child {
+    margin-right: 0; /* 마지막 버튼의 오른쪽 여백 제거 */
+}
+
+    </style>
 </head>
 <body>
-
-		<form id="formGoodsAdd" method="post" action="${pageContext.request.contextPath }/staff/goodsAdd" enctype="multipart/form-data">
-	<div>
-		<table>
-		<td>goodsTitle</td>
-		<td><input type = "text" name="goodsTitle" id="goodsTitle"></td>
-		<td>goodsMemo</td>
-		<td><input type = "text" name="goodsMemo" id="goodsMemo"></td>
-		<td>goodsPrice</td>
-		<td><input type = "number" name="goodsPrice" id="goodsPrice"></td>
-		<td>goodState</td>
-		<td>
-			재고있음 : <input name="goodsState" id="goodsState" type="radio" value="재고있음">
-			재고없음 : <input name="goodsState" id="goodsState" type="radio" value="재고없음">
-		</td>
-		<td>goodsCategory</td>
-		<td>
-			<select name = "categoryNo" id = "categoryNo">
-				<option value="">:::선택:::</option>
-				<c:forEach items="${categoryList}" var="c">
-					<option value="${c.categoryNo}">${c.categoryTitle}</option>
-				</c:forEach>
-			</select>
-		</td>
-		</table>
-	</div>
-		<div class="mb-3">
-	        <label class="form-label">파일 업로드</label>
-	        <div id="fileDiv">
-	        	<input type="file" name="goodsFile" class="form-control goodsFile mb-2">
-	            <div><button type="button" id="btnAddFile" class="btn btn-success mb-3">파일 추가</button></div>
-	            <button type="button" id="btnRemoveFile" class="btn btn-danger mb-3">파일 삭제</button>
-	        </div>
+   <header class="bg-dark text-white py-3">
+    <div class="container d-flex justify-content-between">
+        <h1 class="h4">상품 페이지</h1>
+        <div class="d-flex align-items-center">
+        	<div class="button-group">
+    <a href="${pageContext.request.contextPath}/staff/main" class="btn btn-outline-light btn-sm btn-custom">home</a>
+    <a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-light btn-sm btn-custom">로그아웃</a>
+</div>
         </div>
-		<button id="btnGoodsAdd" type="button">add goods</button>
-		</form>
+    </div>
+</header>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div class="sidebar">
+                
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="${pageContext.request.contextPath}/staff/profile">${loginStaff.staffId}님</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/goodsList">상품 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/goodsCategoryList">상품 카테고리 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/categoryList">카테고리 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/customerList">회원 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/reviewList">리뷰 관리 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/staffList">스태프 리스트</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="col-md-9">
+            <form id="formGoodsAdd" method="post" action="${pageContext.request.contextPath}/staff/goodsAdd" enctype="multipart/form-data">
+               
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="goodsTitle" class="form-label">Goods Title</label>
+                        <input type="text" class="form-control" name="goodsTitle" id="goodsTitle">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="goodsMemo" class="form-label">Goods Memo</label>
+                        <input type="text" class="form-control" name="goodsMemo" id="goodsMemo">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="goodsPrice" class="form-label">Goods Price</label>
+                        <input type="number" class="form-control" name="goodsPrice" id="goodsPrice">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Goods State</label>
+                        <div>
+                            <label class="form-check-label">
+                                <input name="goodsState" type="radio" value="재고있음" class="form-check-input"> 재고있음
+                            </label>
+                            <label class="form-check-label ms-3">
+                                <input name="goodsState" type="radio" value="재고없음" class="form-check-input"> 재고없음
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+    <div id="fileDiv" class="d-flex gap-2">
+        <button type="button" id="btnAddFile" class="btn btn-success">파일 추가</button>
+        <button type="button" id="btnRemoveFile" class="btn btn-danger">파일 삭제</button>
+    </div>
+    <button id="btnGoodsAdd" type="submit" class="btn btn-primary">상품추가</button>
+</div>
+            </form>
+
+        </div>
+    </div>
+</div>
 </body>
 <script type>
 	$('#btnGoodsAdd').click(function() {
@@ -83,4 +190,8 @@
         }
     });
 </script>
+    <%@ include file="common/footer.jsp" %>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
