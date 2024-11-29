@@ -180,6 +180,7 @@ public class CustomerController {
 			model.addAttribute("msg", "로그인실패");
 			return "common/login";
 		}
+		log.debug("로그인 성공");
 		session.setAttribute("customerMail", customerMail);
 
 		return "redirect:/common/home";
