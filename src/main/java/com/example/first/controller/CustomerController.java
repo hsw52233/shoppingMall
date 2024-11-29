@@ -146,7 +146,7 @@ public class CustomerController {
 		List<Map<String, Object>> goodsList = goodsService.getSelectGoodsList(categoryNo, page, searchTitle);
 		List<Category> categoryList = categoryService.getCategoryList();
 		int lastPage = goodsService.getLastPage(categoryNo,page);
-		
+		log.debug("goodsList : " + goodsList.toString());
 		log.debug("lastPage : "+lastPage);
 		log.debug("beginRow : "+page.getBeginRow());
 		model.addAttribute("categoryNo",categoryNo);

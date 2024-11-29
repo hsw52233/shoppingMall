@@ -29,8 +29,6 @@ public class GoodsController {
 	@Autowired
 	private GoodsService goodsService;
 	@Autowired
-	private GoodsFileService goodsFileService;
-	@Autowired
 	private GoodsCategoryService goodsCategoryService;
 	@Autowired
 	private BoardService boardService;
