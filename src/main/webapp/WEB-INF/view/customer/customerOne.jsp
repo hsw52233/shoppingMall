@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="inc/header.jsp" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,16 +38,7 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between">
-            <h1 class="h4">마이페이지</h1>
-            <div class="d-flex align-items-center">
-                <span class="me-3">안녕하세요, [${customerMail}]님!</span>
-                <a href="#" class="btn btn-outline-light btn-sm">로그아웃</a>
-            </div>
-        </div>
-    </header>
+   
 
     <div class="container-fluid mt-5">
         <div class="row">
@@ -131,13 +124,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-3 mt-5">
-        <div class="container text-center">
-            <p>&copy; 2024 | All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    <%@ include file="inc/footer.jsp" %>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

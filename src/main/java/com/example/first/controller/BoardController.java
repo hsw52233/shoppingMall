@@ -25,6 +25,18 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@GetMapping ("/staff/reviewList")
+	public String reviewList(Model model) {
+		
+		List<Board> reviewList = boardService.getReviewList();
+		model.addAttribute("reviewList", reviewList);
+		
+		
+		return "staff/reviewList";
+	}
+	
+	
+	
 	@GetMapping("/staff/removeReview")
 	public String removeReview(@RequestParam int ordersNo) {
 		
