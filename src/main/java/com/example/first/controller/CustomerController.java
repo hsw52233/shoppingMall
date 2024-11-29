@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.service.AddressService;
+import com.example.first.service.CategoryService;
 import com.example.first.service.CustomerService;
 import com.example.first.service.GoodsService;
 import com.example.first.service.OrdersService;
 import com.example.first.service.PaymentService;
 import com.example.first.vo.Address;
+import com.example.first.vo.Category;
 import com.example.first.vo.Customer;
 import com.example.first.vo.Goods;
 import com.example.first.vo.Page;
@@ -42,6 +44,9 @@ public class CustomerController {
 	
 	@Autowired
 	PaymentService paymentService;
+	
+	@Autowired
+	CategoryService categoryService;
 	
 	
 	@GetMapping("/staff/paymentComplete")
@@ -138,7 +143,8 @@ public class CustomerController {
 	// customer/home (메인페이지)
 	@GetMapping("/common/home")
 	public String home(Model model, @RequestParam(defaultValue = "0") Integer categoryNo, Page page, @RequestParam(required = false) String searchTitle) {
-		List<Map<String, Object>> goodsList = goodsService.getGoodsListByCategory(categoryNo, page, searchTitle);
+		List<Map<String, Object>> goodsList = goodsService.getSelectGoodsList(categoryNo, page, searchTitle);
+		List<Category> categoryList = categoryService.getCategoryList();
 		int lastPage = goodsService.getLastPage(categoryNo,page);
 		
 		log.debug("lastPage : "+lastPage);
@@ -150,6 +156,7 @@ public class CustomerController {
 		model.addAttribute("numPerPage",page.getNumPerPage());
 		model.addAttribute("endPage",page.getEndPage());
 		model.addAttribute("lastPage",lastPage);
+		model.addAttribute("categoryList",categoryList);
 		model.addAttribute("goodsList",goodsList);
 		return "common/home";
 	}
@@ -173,6 +180,7 @@ public class CustomerController {
 			model.addAttribute("msg", "로그인실패");
 			return "common/login";
 		}
+		log.debug("로그인 성공");
 		session.setAttribute("customerMail", customerMail);
 
 		return "redirect:/common/home";

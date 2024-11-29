@@ -67,4 +67,10 @@
 		from cart
 		where customer_mail = #{customerMail}
 	</delete>
+	
+	<delete id="deleteCartByGoods">
+    delete 
+    from cart
+    where goods_no = #{goodsNo}
+</delete>
 </mapper>

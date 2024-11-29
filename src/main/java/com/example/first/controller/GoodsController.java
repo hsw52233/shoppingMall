@@ -16,6 +16,7 @@ import com.example.first.service.BoardService;
 import com.example.first.service.GoodsCategoryService;
 import com.example.first.service.GoodsFileService;
 import com.example.first.service.GoodsService;
+import com.example.first.vo.Category;
 import com.example.first.vo.Goods;
 import com.example.first.vo.GoodsForm;
 
@@ -79,8 +80,10 @@ public class GoodsController {
 	// 하상우) 상품 추가
 
 	    @GetMapping("/staff/goodsAdd")
-		public String goodsAdd() {
-			return "staff/goodsAdd";
+		public String goodsAdd(Model model) {
+	    	List<Category> categoryList = goodsCategoryService.getCategoryList();
+			model.addAttribute("categoryList",categoryList);
+	    	return "staff/goodsAdd";
 		}
 		
 		@PostMapping("/staff/goodsAdd")
@@ -117,19 +120,12 @@ public class GoodsController {
 	
 	//하상우 ) 관리자 페이지 상품 리스트
 	@GetMapping("/staff/goodsList")
-	public String goodsList(Model model, @RequestParam(defaultValue = "1") int currentPage
-			, @RequestParam(defaultValue = "10") int rowPerPage) {
-		
-		Map<String, Object> map = new HashMap<>();
-		int beginRow = (currentPage-1) * rowPerPage;
-		map.put("beginRow", beginRow);
-		map.put("rowPerPage", rowPerPage);
-		
-		int lastPage = goodsService.getLastPage(rowPerPage);
-		List<Goods> goodsList = goodsService.getGoodsList();
+	public String goodsList(Model model) {
+
+		List<Map<String,Object>> goodsList = goodsService.getGoodsList();
+
 		model.addAttribute("goodsList", goodsList);
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("lastPage", lastPage);
+		
 		
 		return "staff/goodsList";
 		

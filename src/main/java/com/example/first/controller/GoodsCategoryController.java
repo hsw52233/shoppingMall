@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.service.GoodsCategoryService;
+import com.example.first.vo.Category;
 import com.example.first.vo.GoodsCategory;
 
 @Controller
@@ -32,7 +33,7 @@ public class GoodsCategoryController {
 	@GetMapping("/staff/goodsCategoryList")
 	public String goodsCategoryList(Model model) {
 		
-		List<GoodsCategory> goodsCategoryList = goodsCategoryService.getCategoryList();
+		List<Category> goodsCategoryList = goodsCategoryService.getCategoryList();
 		model.addAttribute("goodsCategoryList", goodsCategoryList);
 		
 		

@@ -109,6 +109,7 @@
             </div>
         </div>
 
+
         <!-- Main Content -->
         <div class="col-md-9">
             <form id="formGoodsAdd" method="post" action="${pageContext.request.contextPath}/staff/goodsAdd" enctype="multipart/form-data">
@@ -148,6 +149,7 @@
     <button id="btnGoodsAdd" type="submit" class="btn btn-primary">상품추가</button>
 </div>
             </form>
+
         </div>
     </div>
 </div>
@@ -162,9 +164,11 @@
 			alert('goodsPrice 입력');
 		} else if(!$('input[name="goodsState"]:checked').val()) {
 			alert('goodsState 선택');
-		} else if($('.actorFile').length > 0 && $('.actorFile').last().val() == '') {
+		} else if(!$('#categoryNo').val()) {
+			alert('categoryTitle 선택');
+		} else if($('.goodsFile').length > 0 && $('.goodsFile').last().val() == '') {
 			alert('첨부되지 않은 파일 존재');
-		} else{
+		} else {
 			$('#formGoodsAdd').submit();
 		}
 	});

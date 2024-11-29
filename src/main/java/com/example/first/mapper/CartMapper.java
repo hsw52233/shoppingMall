@@ -17,8 +17,11 @@ public interface CartMapper {
 	
 	public int insertCart(Cart cart);
 	
+	// 장바구니 테이블 데이터 삭제
 	public int deleteCartByCartNo(int cartNo);
-	
+	// 장바구니 테이블 데이터 전체 삭제
 	public int deleteCartAll(String customerMail);
-
+	
+	// 굿즈삭제할때 장바구니 안에 goods 먼저 삭제(트랜잭션)
+	public int deleteCartByGoods(int goodsNo);
 }

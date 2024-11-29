@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.service.BoardService;
 import com.example.first.vo.Board;
+import com.example.first.vo.Customer;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -71,5 +73,23 @@ public class BoardController {
 		}
 		log.debug("후기 입력 실패");
 		return "customer/reviews";
+	}
+	@GetMapping("/customer/reviewsList")
+	public String reviewsList(Model model, @RequestParam String customerMail) {
+		List<Board> reviewsList = boardService.getSelectReviewsListByCustomer(customerMail);
+		model.addAttribute("reviewsList", reviewsList);
+		return "customer/reviewsList";
+	}
+	
+	@GetMapping("/customer/deleteReviews")
+	public String deleteReviews(HttpSession session,@RequestParam int ordersNo) {
+		String customerMail = ((Customer) (session).getAttribute("customerMail")).getCustomerMail();
+		int remove = boardService.remove(ordersNo);
+		if(remove == 1) {
+			log.debug("댓글 삭제 성공");
+			return "redirect:/customer/reviewsList?customerMail="+customerMail;
+		}
+		log.debug("댓글 삭제 실패");
+		return "customer/reviewList";
 	}
 }

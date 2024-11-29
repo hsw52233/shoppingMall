@@ -12,7 +12,7 @@
 <body>
 	<h1>Register</h1>
 	<!-- form에서 입력받은 정보들은 common/register로 보내지게끔 경로를 설정함 / post방식으로 진행  -->
-	<form id="form" action="${pageContext.request.contextPath}/common/register" method="post">
+	<form id="form" action="${pageContext.request.contextPath}/customer/register" method="post">
 			<div>
 				<label for="loginId"> E-mail </label>
 				<input id="loginId" type="text" name="loginId">
