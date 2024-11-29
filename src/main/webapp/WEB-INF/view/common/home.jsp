@@ -29,6 +29,12 @@
 		<input type="text" name = "searchTitle" id="searchTitle" value="${searchTitle}">
 		<button id="btnSearchTitle" type="button">검색</button>
 	</form>
+	<div>
+		<a href="${pageContext.request.contextPath}/common/home">전체<a>
+		<c:forEach items="${categoryList}" var="c">
+			<a href="${pageContext.request.contextPath}/common/home?categoryNo=${c.categoryNo}">${c.categoryTitle}</a>
+		</c:forEach>
+	</div>
 	<table class ="table table-bordered">
 		<c:forEach items="${goodsList}" var="g">
 		<tr>

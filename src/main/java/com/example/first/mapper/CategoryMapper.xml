@@ -3,7 +3,7 @@
 <mapper namespace="com.example.first.mapper.CategoryMapper">
 
 
-	<select id="getCategoryList" parameterType="com.example.first.vo.Category">
+	<select id="getCategoryList" resultType="com.example.first.vo.Category">
 		
 		SELECT
 			category_no categoryNo,

@@ -25,11 +25,21 @@
 			재고있음 : <input name="goodsState" id="goodsState" type="radio" value="재고있음">
 			재고없음 : <input name="goodsState" id="goodsState" type="radio" value="재고없음">
 		</td>
+		<td>goodsCategory</td>
+		<td>
+			<select name = "categoryNo" id = "categoryNo">
+				<option value="">:::선택:::</option>
+				<c:forEach items="${categoryList}" var="c">
+					<option value="${c.categoryNo}">${c.categoryTitle}</option>
+				</c:forEach>
+			</select>
+		</td>
 		</table>
 	</div>
 		<div class="mb-3">
 	        <label class="form-label">파일 업로드</label>
 	        <div id="fileDiv">
+	        	<input type="file" name="goodsFile" class="form-control goodsFile mb-2">
 	            <div><button type="button" id="btnAddFile" class="btn btn-success mb-3">파일 추가</button></div>
 	            <button type="button" id="btnRemoveFile" class="btn btn-danger mb-3">파일 삭제</button>
 	        </div>
@@ -47,9 +57,11 @@
 			alert('goodsPrice 입력');
 		} else if(!$('input[name="goodsState"]:checked').val()) {
 			alert('goodsState 선택');
-		} else if($('.actorFile').length > 0 && $('.actorFile').last().val() == '') {
+		} else if(!$('#categoryNo').val()) {
+			alert('categoryTitle 선택');
+		} else if($('.goodsFile').length > 0 && $('.goodsFile').last().val() == '') {
 			alert('첨부되지 않은 파일 존재');
-		} else{
+		} else {
 			$('#formGoodsAdd').submit();
 		}
 	});

@@ -58,16 +58,19 @@
 	</delete>
 
 	<!-- 하상우 ) 관리자 상품 리스트 조회 -->
-	<select id="getGoodsList" parameterType="com.example.first.vo.Goods">
+	<select id="getGoodsList" parameterType="Map">
 		SELECT 
-			goods_no goodsNo,	
-			goods_title goodsTitle,
-			goods_memo goodsMemo,
-			goods_price goodsPrice,
-			goods_state goodsState,
-			update_date updateDate,
-			create_date createDate
-		FROM goods
+			g.goods_no goodsNo,	
+			g.goods_title goodsTitle,
+			g.goods_memo goodsMemo,
+			g.goods_price goodsPrice,
+			g.goods_state goodsState,
+            c.category_title categoryTitle,
+			g.update_date updateDate,
+			g.create_date createDate
+		FROM goods g
+        INNER JOIN goods_category gc ON g.goods_no = gc.goods_no
+        INNER JOIN category c ON gc.category_no = c.category_no
 		ORDER BY goodsNo DESC
 	</select>
 
@@ -129,28 +132,5 @@
 				c.category_no = #{categoryNo}
 			</if>
 		</where>
-	</select>
-	
-	<!--  Author : 이동윤 상품 카테고리별 리스트 -->
-	<select id="selectGoodsListByCategory" resultType="Map" parameterType="com.example.first.vo.Page">
-		select 
-			g.goods_no goodsNo,
-		    g.goods_title goodsTitle,
-		    g.goods_memo goodsMemo,
-		    g.goods_state goodsState,
-		    c.category_no categoryNo,
-		    c.category_title categoryTitle,
-		    gf.goods_file_name goodsFileName,
-		    gf.goods_file_ext goodsFileExt
-		from goods g
-		inner join goods_category gc on g.goods_no = gc.goods_no
-		inner join category c on gc.category_no = c.category_no
-		inner join goods_file gf on g.goods_no = gf.goods_no
-		<where>
-			<if test="categoryNo != null and categoryNo != ''">
-				c.category_no = #{categoryNo}
-			</if>
-		</where>
-		limit #{beginRow},#{rowPerPage}
 	</select>
 </mapper>

@@ -14,4 +14,6 @@ public interface OrdersMapper {
 	public int insertOrder(Orders orders);
 	
 	public List<Map<String,Object>> selectOrderListByPayment(int paymentNo);
+
+	public int deleteOrdersListByGoods(int goodsNo);
 }

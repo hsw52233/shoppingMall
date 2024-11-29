@@ -13,5 +13,6 @@ public class GoodsForm {
 	private String goodsMemo;
 	private Integer goodsPrice;
 	private String goodsState;
+	private Integer categoryNo;
 	private List<MultipartFile> goodsFile;
 }

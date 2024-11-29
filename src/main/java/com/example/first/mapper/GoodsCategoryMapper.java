@@ -13,7 +13,10 @@ public interface GoodsCategoryMapper {
 	
 	int remove(int goodsNo);
 	
-	List<GoodsCategory> getCategoryList();
+	List<Category> getCategoryList();
 	
-	int goodsCategoryAdd(GoodsCategory goodsCategory);
+	
+	int insertGoodsCategory(GoodsCategory goodsCategory);
+	
+	int deleteGoodsCategory(GoodsCategory goodsCategory);
 }

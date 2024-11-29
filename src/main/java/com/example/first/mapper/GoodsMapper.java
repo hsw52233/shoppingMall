@@ -34,13 +34,11 @@ public interface GoodsMapper {
 	
 	// 관리자 상품 리스트 조회
 	
-	List<Goods> getGoodsList();
+	List<Map<String,Object>> getGoodsList();
 	
 	// 굿즈 상세정보
 	public Map<String,Object> selectGoodsOne(int goodsNo);
 	
-	public List<Map<String, Object>> selectGoodsListByCategory(Map<String,Object> paramMap);
-
 	public List<Map<String, Object>> selectGoodsList(Map<String,Object> paramMap);
 	
 	public int goodsLastPage(int categoryNo);

@@ -12,6 +12,8 @@ public class ShoppingMallApplication implements WebMvcConfigurer {
 	private CustomerInterceptor customerInterceptor;
 	@Autowired
 	private AdminInterceptor adminInterceptor;
+	@Autowired
+	private CommonInterceptor commonInterceptor;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ShoppingMallApplication.class, args);
@@ -19,7 +21,11 @@ public class ShoppingMallApplication implements WebMvcConfigurer {
 
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(customerInterceptor).addPathPatterns("/customer/**");
-		//registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**");
+		registry.addInterceptor(adminInterceptor).addPathPatterns("/staff/**").excludePathPatterns("/staff/login");
+		registry.addInterceptor(commonInterceptor).addPathPatterns("/common/**")
+													.excludePathPatterns("/common/home")
+													.excludePathPatterns("/common/logout")
+													.excludePathPatterns("/common/goodsOne");
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 
