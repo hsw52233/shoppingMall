@@ -13,10 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.first.mapper.BoardMapper;
+import com.example.first.mapper.CartMapper;
 import com.example.first.mapper.CategoryMapper;
 import com.example.first.mapper.GoodsCategoryMapper;
 import com.example.first.mapper.GoodsFileMapper;
 import com.example.first.mapper.GoodsMapper;
+import com.example.first.mapper.OrdersMapper;
 import com.example.first.vo.Category;
 import com.example.first.vo.Goods;
 import com.example.first.vo.GoodsCategory;
@@ -41,10 +43,13 @@ public class GoodsService {
 	private BoardMapper boardMapper;
 	
 	@Autowired
-	private CategoryMapper categoryMapper;
+	private OrdersMapper ordersMapper; 
 	
 	@Autowired
 	private GoodsCategoryMapper goodsCategoryMapper;
+	
+	@Autowired
+	private CartMapper cartMapper;
 
 	// 하상우) 재고 활성화
 
@@ -115,6 +120,10 @@ public class GoodsService {
 	public void remove(int goodsNo, String path) {
 		// 상품 댓글 전체 삭제
 		boardMapper.deleteReviewsByGoods(goodsNo);
+		// 해당 상품이 장바구니에 담겨있으면 삭제
+		cartMapper.deleteCartByGoodsNo(goodsNo);
+		// 해당 상품 주문 목록 삭제
+		ordersMapper.deleteOrdersListByGoods(goodsNo);
 		// 상품 이미지 데이터 삭제
 		List<GoodsFile> fileList = goodsFileMapper.selectGoodsFileListByGoods(goodsNo);
 		System.out.println("fileList : "+ fileList.toString());
@@ -135,7 +144,6 @@ public class GoodsService {
 	}
 
 	// 하상우) 관리자 페이지에서 상품 리스트 조회
-
 	public List<Map<String,Object>> getGoodsList() {
 		return goodsMapper.getGoodsList();
 	}
