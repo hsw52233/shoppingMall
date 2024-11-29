@@ -34,7 +34,7 @@ public interface GoodsMapper {
 	
 	// 관리자 상품 리스트 조회
 	
-	List<Goods> getGoodsList();
+	List<Map<String,Object>> getGoodsList();
 	
 	// 굿즈 상세정보
 	public Map<String,Object> selectGoodsOne(int goodsNo);

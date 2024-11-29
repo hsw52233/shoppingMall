@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.first.mapper.GoodsCategoryMapper;
-import com.example.first.mapper.GoodsMapper;
+import com.example.first.vo.Category;
 import com.example.first.vo.GoodsCategory;
 
 
@@ -26,12 +26,12 @@ public class GoodsCategoryService {
 		
 	
 	
-	public List<GoodsCategory> getCategoryList(){
+	public List<Category> getCategoryList(){
 		return goodsCategoryMapper.getCategoryList();
 	}
 	
 	public int goodsCategoryAdd(GoodsCategory goodsCategory) {
-		return goodsCategoryMapper.goodsCategoryAdd(goodsCategory);
+		return goodsCategoryMapper.insertGoodsCategory(goodsCategory);
 	}
 	
 	
