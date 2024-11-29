@@ -17,22 +17,24 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>STAFF ONE</h1>
-			<table class="table">
+			<div>
+				<table class="table">
+					<c:forEach items="${profile}" var="p">
 				<tr>
 					<td>staffId</td>
-					<td>${loginStaff.staffId}</td>
-				</tr>
-				<tr>
+					<td>${p.staffId}</td>
+				</tr>	
 					<td>staffPw</td>
-					<td>${loginStaff.staffPw}</td>
-				</tr>
-				<tr>
+							<td>${p.staffPw}</td>
+				<tr>	
 					<td>updateDate</td>
-					<td>${loginStaff.updateDate}</td>
+							<td>${p.updateDate}</td>
 				</tr>
-				<tr>
+				<tr>	
 					<td>createDate</td>
-					<td>${loginStaff.createDate}</td>
+							<td>${p.createDate}</td>
+				</tr>
+					</c:forEach>
 				</tr>
 			</table>
 			<br>

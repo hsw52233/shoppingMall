@@ -34,8 +34,6 @@ public class CategoryController {
 	        Category category = categoryService.getCategoryNo(categoryNo);
 	        model.addAttribute("category", category);
 	    
-	        System.out.println("값이 안넘어옴");
-	    
 	    return "staff/categoryModify";
 	}
 	
