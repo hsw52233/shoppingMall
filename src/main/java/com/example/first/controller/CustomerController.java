@@ -202,6 +202,9 @@ public class CustomerController {
 		log.debug("customerMail : " + customerMail);
 		Map<String, Object> customer = customerService.getCutomerOne(customerMail);
 		log.debug("customer : " + customer);
+		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail);
+		log.debug("orderList : " + orderList);
+		model.addAttribute("orderList", orderList);
 		model.addAttribute("customer", customer);
 		model.addAttribute("customerMail", customerMail);
 		return "customer/customerOne";
@@ -209,7 +212,8 @@ public class CustomerController {
 	
 	// 비밀번호 변경
 	@GetMapping("/customer/modifyCustomer")
-	public String modifyCustomer(Model model, @RequestParam String customerMail) {
+	public String modifyCustomer(Model model, HttpSession session) {
+		String customerMail = ((Customer) (session).getAttribute("customerMail")).getCustomerMail();
 		model.addAttribute("customerMail", customerMail);
 		return "customer/modifyCustomer";
 	}

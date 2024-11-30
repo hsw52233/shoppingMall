@@ -24,6 +24,6 @@ public interface BoardMapper {
 	public int deleteReviewsByGoods(int goodsNo);
 	
 	// 고객의 댓글 리스트
-	public List<Board> selectReviewsListByCustomer(String customerMail);
+	public List<Map<String,Object>> selectReviewsListByCustomer(String customerMail);
 
 }

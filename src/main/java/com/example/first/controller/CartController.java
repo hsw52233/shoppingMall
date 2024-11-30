@@ -30,8 +30,8 @@ public class CartController {
 
 	// Author : 이동윤 장바구니 리스트
 	@GetMapping("/customer/cartList")
-	public String cartList(Model model, @RequestParam String customerMail) {
-
+	public String cartList(Model model, HttpSession session) {
+		String customerMail = ((Customer)(session).getAttribute("customerMail")).getCustomerMail();
 		List<Map<String, Object>> cartList = cartService.getSelectCartList(customerMail);
 		List<Map<String, Object>> addressList = addressService.getAddressList(customerMail);
 		model.addAttribute("addressList",addressList);
