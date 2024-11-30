@@ -51,6 +51,11 @@ public class CustomerService {
 	// addCustomer값 안에 CustomerController에서 받아온 registerCustomer값을 넘겨줌
 	// CustomerMapper/insertCustomer식안에 registerCustomer값을 넘겨줌
 	public Integer addCustomer(Customer registerCustomer) {
+		// customer 유효성 검사
+		Customer login = customerMapper.login(registerCustomer);
+		if(login != null) {
+			return 0;
+		}
 		return customerMapper.insertCustomer(registerCustomer);
 	}
 	
