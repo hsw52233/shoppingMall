@@ -26,7 +26,7 @@
             }
             /* Left Sidebar */
             .sidebar {
-                width: 250px;
+                width: 400px;
                 background-color: #f8f9fa;
                 padding-top: 20px;
                 border-right: 1px solid #ddd;
@@ -122,10 +122,10 @@
         </header>
 
         <!-- Main Content -->
-        <div class="container main-content">
+        <div class="container main-content my-2">
             <!-- Left Sidebar: Category list -->
             <div class="sidebar">
-                <div class="list-group">
+                <div class="list-group =">
                     <h4 class="list-group-item active bg-dark">Categories</h4>
                     <c:forEach items="${categoryList}" var="category">
                         <a href="${pageContext.request.contextPath}/common/home?categoryNo=${category.categoryNo}" class="list-group-item list-group-item-action">

@@ -109,7 +109,7 @@
 		from goods g
 		inner join goods_category gc on g.goods_no = gc.goods_no
 		inner join category c on gc.category_no = c.category_no
-		left join (SELECT
+		left join (select
 			        goods_no, 
 			        goods_file_name, 
 			        goods_file_ext, 

@@ -3,6 +3,7 @@ package com.example.first.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,7 +58,7 @@ public class BoardController {
 	public String reviews(Model model, Board board, @RequestParam int paymentNo) {
 		int duplicate = boardService.getDuplicateReviews(board.getOrdersNo());
 		if(duplicate == 1) {
-			String msg = "후기를 두번 입력할 순 없습니다";
+			String msg = "후기 두번 입력은 불가능 합니다.";
 			try {
 				msg = URLEncoder.encode(msg, "UTF-8");
 			} catch (UnsupportedEncodingException e) {
@@ -75,8 +76,9 @@ public class BoardController {
 		return "customer/reviews";
 	}
 	@GetMapping("/customer/reviewsList")
-	public String reviewsList(Model model, @RequestParam String customerMail) {
-		List<Board> reviewsList = boardService.getSelectReviewsListByCustomer(customerMail);
+	public String reviewsList(Model model, HttpSession session) {
+		String customerMail = ((Customer)(session).getAttribute("customerMail")).getCustomerMail();
+		List<Map<String,Object>> reviewsList = boardService.getSelectReviewsListByCustomer(customerMail);
 		model.addAttribute("reviewsList", reviewsList);
 		return "customer/reviewsList";
 	}

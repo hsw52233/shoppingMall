@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.service.AddressService;
 import com.example.first.vo.Address;
+import com.example.first.vo.Customer;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -34,8 +36,8 @@ public class AddressController {
 	}
 	
 	@GetMapping("/customer/addressList")
-	public String selectAddressList(Model model,@RequestParam String customerMail) {
-		
+	public String selectAddressList(Model model,HttpSession session) {
+		String customerMail = ((Customer)(session).getAttribute("customerMail")).getCustomerMail();
 		List<Map<String, Object>> addressList = addressService.getAddressList(customerMail);
 		model.addAttribute("addressList", addressList);
 		model.addAttribute("customerMail", customerMail);

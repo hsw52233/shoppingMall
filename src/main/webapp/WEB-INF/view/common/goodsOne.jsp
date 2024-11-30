@@ -135,7 +135,10 @@
 		                    </form>
 	                    </c:if>
 	                    <c:if test="${goods.goodsState == '재고없음'}">
-					    	품절
+					    	<button id="btnAddCart" class="btn btn-outline-dark flex-shrink-0" type="button">
+		                        <i class="bi-cart-fill me-1"></i>
+		                        품절
+		                    </button>
 					    </c:if>
 		                </div>
 		            </div>

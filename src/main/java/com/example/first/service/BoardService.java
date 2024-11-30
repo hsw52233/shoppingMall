@@ -40,7 +40,7 @@ public class BoardService {
 	}
 
 	// 이동윤 고객별 후기 리스트
-	public List<Board> getSelectReviewsListByCustomer(String customerMail) {
+	public List<Map<String,Object>> getSelectReviewsListByCustomer(String customerMail) {
 		return boardMapper.selectReviewsListByCustomer(customerMail);
 	}
 

@@ -10,10 +10,10 @@
 		    p.payment_method paymentMethod,
 		    a.address_detail addressDetail,
 		    p.payment_state paymentState
-		from payment p
-		inner join address a on p.address_no = a.address_no
+		from payment p 
+		inner join address a on p.address_no = a.address_no 
 		where customer_mail = #{customerMail}
-		order by payment_no desc
+		order by p.payment_no desc
 	</select>
 	<!-- 결제 후 주문목록에 추가 -->
 	<insert id="insertOrder" parameterType="com.example.first.vo.Orders">
@@ -33,7 +33,7 @@
 			o.payment_no paymentNo,
 			o.orders_no ordersNo,
 			o.goods_no goodsNo,
-			  gf.goods_file_name goodsFileName,
+			gf.goods_file_name goodsFileName,
 			gf.goods_file_ext goodsFileExt,
 			g.goods_title goodsTitle,
 			g.goods_memo goodsMemo,
@@ -43,12 +43,13 @@
 		from orders o
 		inner join goods g on o.goods_no = g.goods_no
 		inner join payment p on o.payment_no = p.payment_no
-		left join (select  
+		left join (	select 
+						gf.goods_no,
 						gf.goods_file_name,
-						gf.goods_file_ext, 
-						gf.goods_no
+						gf.goods_file_ext,
+						row_number() over (partition by gf.goods_no order by gf.goods_file_name) as row_num
 					from goods_file gf
-					limit 1) gf on gf.goods_no = o.goods_no
+				) gf on gf.goods_no = o.goods_no and gf.row_num = 1
 		where o.payment_no = #{paymentNo}
 	</select>
 	<!-- 상품을 주문했던 목록 전체 삭제 -->
