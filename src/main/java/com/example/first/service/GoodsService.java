@@ -171,6 +171,7 @@ public class GoodsService {
 	// Author : 이동윤 상품 라스트페이지
 	public int getLastPage(int categoryNo, Page page) {
 		int totalRow = goodsMapper.goodsLastPage(categoryNo);
+		System.out.println("totalRow : "+ totalRow);
 		int lastpage = page.getLastPage(totalRow);
 		return lastpage;
 	}

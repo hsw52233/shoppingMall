@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.first.service.OrdersService;
+import com.example.first.vo.Customer;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class OrdersController {
@@ -21,7 +24,8 @@ public class OrdersController {
 	
 	// 이동윤 : 주문내역 리스트
 	@GetMapping("/customer/ordersList")
-	public String ordersList(Model model, @RequestParam String customerMail) {
+	public String ordersList(Model model, HttpSession session) {
+		String customerMail = ((Customer)(session.getAttribute("customerMail"))).getCustomerMail();
 		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail);
 		model.addAttribute("orderList", orderList);
 		return "customer/ordersList";

@@ -19,7 +19,7 @@
 			#{goodsFileSize}
 		)
 	</insert>
-	<!-- 이동윤 삭제할 파일 리스트 -->
+	<!-- 이동윤 해당 굿즈 파일 리스트 -->
 	<select id="selectGoodsFileListByGoods" resultType="com.example.first.vo.GoodsFile">
 		select
 			goods_file_no goodsFileNo,

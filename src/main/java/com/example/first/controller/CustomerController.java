@@ -147,8 +147,12 @@ public class CustomerController {
 		List<Category> categoryList = categoryService.getCategoryList();
 		int lastPage = goodsService.getLastPage(categoryNo,page);
 		log.debug("goodsList : " + goodsList.toString());
+		log.debug("페이지 : "+page.toString());
 		log.debug("lastPage : "+lastPage);
+		log.debug("numPerPage : "+page.getNumPerPage());
 		log.debug("beginRow : "+page.getBeginRow());
+		log.debug("startPage : "+page.getStartPage());
+		log.debug("endPage : "+page.getEndPage());
 		model.addAttribute("categoryNo",categoryNo);
 		model.addAttribute("searchTitle",searchTitle);
 		model.addAttribute("currentPage",page.getCurrentPage());

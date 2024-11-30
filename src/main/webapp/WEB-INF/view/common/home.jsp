@@ -8,6 +8,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Shop Homepage</title>
+         <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -49,7 +52,7 @@
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
+            <div class="container px-90 px-lg-4">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/common/home">Shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -58,28 +61,52 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/common/home">Home</a></li>
                         <c:if test="${sessionScope.customerMail !=null }">
-	                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/customer/customerOne">MyPage</a></li>
+	                        <li class="nav-item">
+	                         	<a class="nav-link" href="${pageContext.request.contextPath}/common/logout">Logout</a>
+	                        </li>
                         </c:if>
                         <c:if test="${sessionScope.customerMail ==null }">
-	                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/common/login">Login</a></li>
+	                        <li class="nav-item">
+	                        	<a class="nav-link" href="${pageContext.request.contextPath}/common/login">Login</a>
+	                        </li>
                         </c:if>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
                     </ul>
-                    <form class="d-flex" action="${pageContext.request.contextPath}/customer/orderList">
+                    <c:if test="${sessionScope.customerMail ==null }">
+                    <form class="d-flex mb-2 mb-lg-0 ms-lg-2" action="${pageContext.request.contextPath}/common/login">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi bi-person-circle me-1"></i>
+                            MyPage
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                        </button>
+                    </form>
+                    </c:if>
+                    <c:if test="${sessionScope.customerMail !=null }">
+                    <form class="d-flex mb-2 mb-lg-0 ms-lg-2" action="${pageContext.request.contextPath}/customer/customerOne">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi bi-person-circle me-1"></i>
+                            MyPage
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                        </button>
+                    </form>
+                    </c:if>
+                    <c:if test="${sessionScope.customerMail ==null }">
+                    <form class="d-flex mb-2 mb-lg-0 ms-lg-2" action="${pageContext.request.contextPath}/common/login">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                     </form>
+                    </c:if>
+                    <c:if test="${sessionScope.customerMail !=null }">
+                    <form class="d-flex mb-2 mb-lg-0 ms-lg-2" action="${pageContext.request.contextPath}/customer/ordersList">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                        </button>
+                    </form>
+                    </c:if>
                 </div>
             </div>
         </nav>
@@ -113,7 +140,7 @@
                 <!-- Search Form -->
                 <form id="formSearchTitle" action="${pageContext.request.contextPath}/common/home" class="mb-4 search-form">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <select id="categoryNo" name="categoryNo" class="form-select">
                                 <option value="">:::전체:::</option>
                                 <c:forEach items="${categoryList}" var="category">
@@ -121,7 +148,7 @@
                                 </c:forEach>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <input type="text" name="searchTitle" id="searchTitle" value="${searchTitle}" class="form-control" placeholder="Search for products..." />
                         </div>
                         <div class="col-md-2">
@@ -129,7 +156,6 @@
                         </div>
                     </div>
                 </form>
-
                 <!-- Product Table -->
                 <div class="row gx-4 gx-lg-5">
                     <c:forEach items="${goodsList}" var="goods">
@@ -145,65 +171,52 @@
                         </div>
                     </c:forEach>
                     <!-- 페이지네이션 -->
-<div class="pagination-container text-center mt-5">
-    <ul class="pagination justify-content-center">
-        <!-- 첫 번째 페이지로 이동 -->
-        <c:if test="${currentPage > 1}">
-            <li class="page-item">
-                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=1" aria-label="First">
-                    <span aria-hidden="true">&laquo;&laquo;</span>
-                </a>
-            </li>
-        </c:if>
-
-        <!-- 이전 페이지로 이동 -->
-        <c:if test="${currentPage > 1}">
-            <li class="page-item">
-                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${currentPage-1}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        </c:if>
-
-        <!-- 페이지 번호들 -->
-        <c:forEach begin="${startPage}" end="${endPage}" step="1" var="i">
-            <c:if test="${i <= lastPage}">
-                <li class="page-item <c:if test="${i == currentPage}">active</c:if>">
-                    <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${i}">${i}</a>
-                </li>
-            </c:if>
-        </c:forEach>
-
-        <!-- 다음 페이지로 이동 -->
-        <c:if test="${currentPage < lastPage}">
-            <li class="page-item">
-                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${currentPage+1}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </c:if>
-
-        <!-- 마지막 페이지로 이동 -->
-        <c:if test="${currentPage < lastPage}">
-            <li class="page-item">
-                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${lastPage}" aria-label="Last">
-                    <span aria-hidden="true">&raquo;&raquo;</span>
-                </a>
-            </li>
-        </c:if>
-    </ul>
-</div>
+					<div class="pagination-container text-center mt-5">
+					    <ul class="pagination justify-content-center">
+					        <c:if test="${startPage > numPerPage}">
+					            <li class="page-item">
+					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${cstartPage-numPerPage}" aria-label="Previous">
+					                    <span aria-hidden="true">&laquo;</span>
+					                </a>
+					            </li>
+					        </c:if>
+					        <!-- 페이지 번호들 -->
+					        <c:forEach var ="i" begin="${startPage}" end="${endPage}">
+					            <c:if test="${i <= lastPage}">
+					                <li class="page-item <c:if test="${i == currentPage}">active</c:if>">
+					                    <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${i}">${i}</a>
+					                </li>
+					            </c:if>
+					        </c:forEach>
+					
+					        <!-- 다음 페이지로 이동 -->
+					        <c:if test="${startPage + numPerPage <= lastPage}">
+					            <li class="page-item">
+					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${startPage+numPerPage}" aria-label="Next">
+					                    <span aria-hidden="true">&raquo;</span>
+					                </a>
+					            </li>
+					        </c:if>
+					
+					        <!-- 마지막 페이지로 이동 -->
+					        <c:if test="${currentPage < lastPage}">
+					            <li class="page-item">
+					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${lastPage}" aria-label="Last">
+					                    <span aria-hidden="true">&raquo;&raquo;</span>
+					                </a>
+					            </li>
+					        </c:if>
+					    </ul>
+					</div>
                 </div>
-                
             </div>
         </div>
-
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; GD 86Website 2024</p></div>
         </footer>
-
-        <script>
+    </body>
+      <script>
             $('#btnSearchTitle').click(function() {
                 if ($('#searchTitle').val().trim() === '') {
                     alert('검색어를 입력해주세요');
@@ -212,7 +225,4 @@
                 $('#formSearchTitle').submit();
             });
         </script>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
 </html>

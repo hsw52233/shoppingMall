@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Page {
 	private Integer currentPage = 1;
-	private Integer rowPerPage = 10;
+	private Integer rowPerPage = 8;
 	private Integer numPerPage = 10;
 	
 	public int getBeginRow() {

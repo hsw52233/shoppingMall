@@ -1,6 +1,5 @@
 package com.example.first.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +17,7 @@ import com.example.first.service.GoodsFileService;
 import com.example.first.service.GoodsService;
 import com.example.first.vo.Category;
 import com.example.first.vo.Goods;
+import com.example.first.vo.GoodsFile;
 import com.example.first.vo.GoodsForm;
 
 import jakarta.servlet.http.HttpSession;
@@ -32,6 +32,8 @@ public class GoodsController {
 	private GoodsCategoryService goodsCategoryService;
 	@Autowired
 	private BoardService boardService;
+	@Autowired
+	private GoodsFileService goodsFileService;
 	
 	
 	// 하상우) 재고 활성화
@@ -133,8 +135,13 @@ public class GoodsController {
 	@GetMapping("/common/goodsOne")
 	public String goodsOne(Model model, @RequestParam Integer goodsNo) {
 		Map<String, Object> goods = goodsService.getGoodsOne(goodsNo);
+		List<GoodsFile> goodsFileList = goodsFileService.getSelectGoodsFileListByGoods(goodsNo);
 		List<Map<String, Object>> reviewsList = boardService.getReviewsListByGoods(goodsNo);
+		log.debug(goods.toString());
+		log.debug(goodsFileList.toString());
+		log.debug(reviewsList.toString());
 		model.addAttribute("goods", goods);
+		model.addAttribute("goodsFileList", goodsFileList);
 		model.addAttribute("reviewsList", reviewsList);
 		return "common/goodsOne";
 	}
