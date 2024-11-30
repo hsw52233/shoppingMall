@@ -123,21 +123,26 @@ public class CustomerController {
 
 	// customer/register(회원가입)
 	@PostMapping("/common/register")
-	public String registerAddCustomer(@RequestParam String loginId, @RequestParam String loginAddress,
-			@RequestParam String password, @RequestParam String gender, @RequestParam String birth) {
-
-		// 1. customer타입을 만들어서 requestparam으로 받은 값들을 넣어준다
+	public String registerAddCustomer(Model model,@RequestParam String loginId,	@RequestParam String password, @RequestParam String gender, @RequestParam String birth) {
 
 		Customer registerCustomer = new Customer();
-		registerCustomer.setCustomerMail(loginId + loginAddress);
+		registerCustomer.setCustomerMail(loginId);
 		registerCustomer.setCustomerPw(password);
 		registerCustomer.setCustomerGender(gender);
 		registerCustomer.setCustomerBirth(birth);
+		log.debug("registerCustomer: "+registerCustomer);
+		
 
 		// 2. customerService/addCustomer를 호출해준다
-		customerService.addCustomer(registerCustomer);
-
-		return "common/login";
+		int row = customerService.addCustomer(registerCustomer);
+		if(row == 1) {
+			model.addAttribute("msg","회원가입 성공");
+			return "common/login";
+		} else {
+			model.addAttribute("msg", "회원가입 실패 : 중복 아이디");
+			return "common/login";
+		}
+		
 	}
 
 	// customer/home (메인페이지)
