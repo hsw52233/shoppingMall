@@ -41,10 +41,6 @@ public class GoodsService {
 
 	@Autowired
 	private BoardMapper boardMapper;
-	
-
-	
-	
 
 	@Autowired
 	private OrdersMapper ordersMapper; 

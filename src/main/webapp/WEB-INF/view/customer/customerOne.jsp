@@ -142,15 +142,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	<c:forEach items="${orderList}" var="o" varStatus="status">
-                        		<c:if test="${status.index < 3}">
+                        	<c:forEach items="${orderList}" var="o">
 		                            <tr>
 		                                <td>${o.paymentNo}</td>
 		                                <td>${o.paymentMethod}</td>
 		                                <td>${o.paymentState}</td>
 		                                <td>${o.paymentPrice} 원</td>
 		                            </tr>
-                           		</c:if>	
                         	</c:forEach>
                         </tbody>
                     </table>

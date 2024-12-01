@@ -155,6 +155,52 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<nav aria-label="Page navigation">
+			    <ul class="pagination justify-content-center">
+			    
+			        <li class="page-item">
+			            <a class="page-link" href="${pageContext.request.contextPath}/customer/ordersList?currentPage=1">&laquo;</a>
+			        </li>
+			        
+			        <c:if test="${startPage > numPerPage}">
+			            <li class="page-item">
+			                <a class="page-link" href="${pageContext.request.contextPath}/customer/ordersList?currentPage=${startPage - numPerPage}">이전</a>
+			            </li>
+			        </c:if>
+			        <c:if test="${startPage < numPerPage}">
+			            <li class="page-item disabled">
+			                <a class="page-link" href="#">이전</a>
+			            </li>
+			        </c:if>
+					<c:forEach var="i" begin="${startPage}" end="${endPage}">
+		                <c:if test="${i <= lastPage}">
+		                    <li class="page-item">
+		                        <a class="page-link" href="${pageContext.request.contextPath}/customer/ordersList?currentPage=${i}">${i}</a>
+		                    </li>
+		                </c:if>
+		            </c:forEach>
+			        <c:if test="${startPage + numPerPage <= lastPage}">
+			            <li class="page-item">
+			                <a class="page-link" href="${pageContext.request.contextPath}/customer/ordersList?currentPage=${startPage + numPerPage}">다음</a>
+			            </li>
+			        </c:if>
+			        <c:if test="${startPage + numPerPage > lastPage}">
+			            <li class="page-item disabled">
+			                <a class="page-link" href="#">다음</a>
+			            </li>
+			        </c:if>
+					<c:if test="${currentPage >= lastPage}">
+				        <li class="page-item">
+				            <a class="page-link" href="#">&raquo;</a>
+				        </li>
+			        </c:if>
+					<c:if test="${currentPage < lastPage}">
+				        <li class="page-item">
+				            <a class="page-link" href="${pageContext.request.contextPath}/customer/ordersList?currentPage=${lastPage}">&raquo;</a>
+				        </li>
+			        </c:if>
+			    </ul>
+			</nav>
 	</div>
 	<hr>
     <!-- Footer-->

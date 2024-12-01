@@ -68,9 +68,9 @@ public class CustomerController {
 	//하상우 ) 관리자 회원 상세 정보 조회
 	
 	@GetMapping("/staff/customerOne")
-	public String customerOne(@RequestParam String customerMail, Model model) {
+	public String customerOne(@RequestParam String customerMail, Model model, Page page) {
 	    Customer customer = customerService.getCustomerOne(customerMail);
-	    Address address = addressService.getAddressOne(customerMail); // AddressService에서 해당 메서드 구현 필요
+	    List<Address> address = addressService.getAddressOne(customerMail); // AddressService에서 해당 메서드 구현 필요
 	    
 	    Customer customermail = customerService.getCustomerMail(customerMail);
 	    model.addAttribute("customerMail", customermail);
@@ -79,7 +79,7 @@ public class CustomerController {
 	    model.addAttribute("address", address);
 	    
 	   
-		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail);
+		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail, page);
 		model.addAttribute("orderList", orderList);
 		
 		
@@ -197,12 +197,13 @@ public class CustomerController {
 
 	// customer/customerOne (마이페이지)
 	@GetMapping("/customer/customerOne")
-	public String customerOne(Model model, HttpSession session) {
+	public String customerOne(Model model, HttpSession session, Page page) {
+		page.setRowPerPage(3);
 		String customerMail = ((Customer) (session).getAttribute("customerMail")).getCustomerMail();
 		log.debug("customerMail : " + customerMail);
 		Map<String, Object> customer = customerService.getCutomerOne(customerMail);
 		log.debug("customer : " + customer);
-		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail);
+		List<Map<String,Object>> orderList = ordersService.getSelectOrdersList(customerMail, page);
 		log.debug("orderList : " + orderList);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("customer", customer);

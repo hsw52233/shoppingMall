@@ -131,7 +131,11 @@
                 </tr>
                 <tr>
                     <td>addressDetail</td>
-                    <td>${address.addressDetail}</td>
+                    <td>
+	                    <c:forEach items="${address}" var="a">
+	                    	${a.addressDetail}<br>
+	                    </c:forEach>
+                    </td>
                 </tr>
             </table>
 
@@ -162,6 +166,9 @@
                                 </a>
                             </c:if>
                             <c:if test="${o.paymentState == '배송중'}">
+                                ${o.paymentState}
+                            </c:if>
+                            <c:if test="${o.paymentState == '배송완료'}">
                                 ${o.paymentState}
                             </c:if>
                         </td>
