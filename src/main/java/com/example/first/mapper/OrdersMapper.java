@@ -9,11 +9,13 @@ import com.example.first.vo.Orders;
 
 @Mapper
 public interface OrdersMapper {
-	public List<Map<String,Object>> selectOrdersList(String customerMail);
+	public List<Map<String,Object>> selectOrdersList(Map<String, Object> paramMap);
 
 	public int insertOrder(Orders orders);
 	
 	public List<Map<String,Object>> selectOrderListByPayment(int paymentNo);
 
 	public int deleteOrdersListByGoods(int goodsNo);
+	
+	public int getTotalRowByCustomer(String customerMail);
 }

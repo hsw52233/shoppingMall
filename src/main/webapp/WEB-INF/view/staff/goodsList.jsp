@@ -127,8 +127,8 @@
                         <td>${s.goodsPrice}</td>
                         <td>
                             <a href="${pageContext.request.contextPath}/staff/modifyGoodsActive?goodsNo=${s.goodsNo}&goodsState=${s.goodsState}" class="btn">
-                                <c:if test="${s.goodsState == '재고있음'}">재고없음</c:if>
-                                <c:if test="${s.goodsState == '재고없음'}">재고있음</c:if>
+                                <c:if test="${s.goodsState == '재고있음'}">재고있음</c:if>
+                                <c:if test="${s.goodsState == '재고없음'}">재고없음</c:if>
                             </a>
                         </td>
                         <td>${s.updateDate}</td>

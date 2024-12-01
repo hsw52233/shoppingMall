@@ -115,7 +115,7 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
+                    <h1 class="display-4 fw-bolder">GDShop</h1>
                     <p class="lead fw-normal text-white-50 mb-0">Find the best products here!</p>
                 </div>
             </div>
@@ -175,7 +175,7 @@
 					    <ul class="pagination justify-content-center">
 					        <c:if test="${startPage > numPerPage}">
 					            <li class="page-item">
-					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${cstartPage-numPerPage}" aria-label="Previous">
+					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&currentPage=${cstartPage-numPerPage}" aria-label="Previous">
 					                    <span aria-hidden="true">&laquo;</span>
 					                </a>
 					            </li>
@@ -184,7 +184,7 @@
 					        <c:forEach var ="i" begin="${startPage}" end="${endPage}">
 					            <c:if test="${i <= lastPage}">
 					                <li class="page-item <c:if test="${i == currentPage}">active</c:if>">
-					                    <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${i}">${i}</a>
+					                    <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&currentPage=${i}">${i}</a>
 					                </li>
 					            </c:if>
 					        </c:forEach>
@@ -192,7 +192,7 @@
 					        <!-- 다음 페이지로 이동 -->
 					        <c:if test="${startPage + numPerPage <= lastPage}">
 					            <li class="page-item">
-					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${startPage+numPerPage}" aria-label="Next">
+					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&currentPage=${startPage+numPerPage}" aria-label="Next">
 					                    <span aria-hidden="true">&raquo;</span>
 					                </a>
 					            </li>
@@ -201,7 +201,7 @@
 					        <!-- 마지막 페이지로 이동 -->
 					        <c:if test="${currentPage < lastPage}">
 					            <li class="page-item">
-					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&page=${lastPage}" aria-label="Last">
+					                <a class="page-link" href="${pageContext.request.contextPath}/common/home?categoryNo=${categoryNo}&searchTitle=${searchTitle}&currentPage=${lastPage}" aria-label="Last">
 					                    <span aria-hidden="true">&raquo;&raquo;</span>
 					                </a>
 					            </li>

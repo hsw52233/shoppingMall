@@ -19,7 +19,7 @@ public class AddressService {
 		return addressMapper.removeAddress(customerMail);
 	}
 	
-	public Address getAddressOne(String customerMail) {
+	public List<Address> getAddressOne(String customerMail) {
         return addressMapper.getAddressByCustomerMail(customerMail);
     }
 	

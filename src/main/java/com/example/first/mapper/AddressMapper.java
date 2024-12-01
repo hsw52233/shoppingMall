@@ -12,7 +12,7 @@ public interface AddressMapper {
 	
 	int removeAddress(String customerMail);
 	
-	Address getAddressByCustomerMail(String customerMail);
+	List<Address> getAddressByCustomerMail(String customerMail);
 	
 	
 	List<Map<String,Object>> selectAddressList(String customerMail);

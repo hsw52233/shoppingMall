@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.OrdersMapper">
 	<!--  Author : 이동윤 주문내역 리스트 -->
-	<select id="selectOrdersList" resultType="Map">
+	<select id="selectOrdersList" resultType="Map" parameterType="Map">
 		select 
 			p.payment_no paymentNo,
 		    p.address_no addressNo,
@@ -14,7 +14,16 @@
 		inner join address a on p.address_no = a.address_no 
 		where customer_mail = #{customerMail}
 		order by p.payment_no desc
+		limit #{beginRow},#{rowPerPage}
 	</select>
+	<!-- 이동윤 : 고객 주문목록 totalRow -->
+	<select id="getTotalRowByCustomer">
+		select count(*)
+		from payment p 
+		inner join address a on p.address_no = a.address_no 
+		where customer_mail = #{customerMail}
+	</select>
+	
 	<!-- 결제 후 주문목록에 추가 -->
 	<insert id="insertOrder" parameterType="com.example.first.vo.Orders">
 		insert into orders(
