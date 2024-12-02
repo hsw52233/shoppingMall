@@ -102,21 +102,6 @@ public class GoodsController {
 			goodsService.goodsAdd(goodsForm,path);
 			return "redirect:/staff/goodsList";
 		}
-	//하상우) 상품 삭제
-	
-	@GetMapping("/staff/removegoods")
-	public String removeGoods(HttpSession session,@RequestParam int goodsNo) {
-		String path = session.getServletContext().getRealPath("/upload/");
-		goodsService.remove(goodsNo,path);
-		
-		
-		return "redirect:/staff/goodsList";
-	}
-	
-	
-	
-	
-	
 	
 	//하상우 ) 관리자 페이지 상품 리스트
 	@GetMapping("/staff/goodsList")

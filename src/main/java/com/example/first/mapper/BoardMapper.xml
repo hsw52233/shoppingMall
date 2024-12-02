@@ -53,14 +53,6 @@
 		order by b.orders_no desc
 	</select>
 	
-	<!-- 해당하는 상품의 댓글 전부 삭제 -->
-	<delete id="deleteReviewsByGoods">
-		delete b
-		from board b
-		inner join orders o on b.orders_no = o.orders_no
-		where o.goods_no =#{goodsNo}
-	</delete>
-	
 	<!-- 고객 댓글 리스트 -->
 	<select id="selectReviewsListByCustomer" resultType="Map">
 		select 

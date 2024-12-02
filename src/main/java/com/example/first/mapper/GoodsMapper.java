@@ -28,12 +28,6 @@ public interface GoodsMapper {
 	
 	int goodsAdd(Goods goods);
 	
-	
-	// 관리자 상품 삭제
-	
-	int remove(int goodsNo);
-	
-	
 	// 관리자 상품 리스트 조회
 	
 	List<Map<String,Object>> getGoodsList();

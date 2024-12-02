@@ -152,7 +152,7 @@
 								<td><input class="form-control mt-2" type="text" name="rePw" id="rePw" required></td>
 							</tr>
 						</table>
-						<button id="btnModifyPassword" type="button" class="btn btn-primary mt-3 position-relative position-absolute bottom-0 end-50">변경</button>
+						<button id="btnModifyPassword" type="button" class="btn btn-primary mt-3 mb-2">변경</button>
 					</form>
 	            </div>
             </div>
@@ -163,7 +163,6 @@
 	        </footer>
 		    <!-- Bootstrap JS -->
 		    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-       
 </body>
 <script>
 	$('#btnModifyPassword').click(function() {
@@ -175,5 +174,6 @@
 			$('#formModifyPassword').submit();
 		}
 	});
+	
 </script>
 </html>
