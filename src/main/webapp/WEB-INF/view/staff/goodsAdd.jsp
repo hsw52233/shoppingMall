@@ -141,10 +141,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3 d-flex justify-content-between align-items-center">
+               <div class="col-md-6">
+    <label for="categoryNo" class="form-label">Goods Category</label>
+    <select class="form-select" name="categoryNo" id="categoryNo">
+        <option value="">:::선택:::</option>
+        <c:forEach items="${categoryList}" var="c">
+            <option value="${c.categoryNo}">${c.categoryTitle}</option>
+        </c:forEach>
+    </select>
+</div>
+
+<!-- 여백 추가 -->
+<div class="my-4"></div> <!-- 추가: 수직 여백 -->
+
+<div class="mb-3 d-flex justify-content-between align-items-center">
     <div id="fileDiv" class="d-flex gap-2">
-        <button type="button" id="btnAddFile" class="btn btn-success">파일 추가</button>
-        <button type="button" id="btnRemoveFile" class="btn btn-danger">파일 삭제</button>
+        <button type="button" id="btnAddFile" class="btn btn-primary">파일 추가</button>
+        <button type="button" id="btnRemoveFile" class="btn btn-primary">파일 삭제</button>
     </div>
     <button id="btnGoodsAdd" type="submit" class="btn btn-primary">상품추가</button>
 </div>
