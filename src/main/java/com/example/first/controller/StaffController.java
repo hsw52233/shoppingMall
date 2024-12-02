@@ -105,11 +105,8 @@ public class StaffController {
 		
 		
 		Staff loginStaff = staffService.login(staff);
-		System.out.println(loginStaff.getStaffId());
-		System.out.println(loginStaff.getStaffPw());
-		
-		if(loginStaff == null) {
-			System.out.println("실패");
+		if (loginStaff == null) {
+			model.addAttribute("msg", "로그인실패");
 			return "staff/login";
 		}
 		session.setAttribute("loginStaff", loginStaff);
