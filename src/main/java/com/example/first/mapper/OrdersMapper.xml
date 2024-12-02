@@ -61,10 +61,5 @@
 				) gf on gf.goods_no = o.goods_no and gf.row_num = 1
 		where o.payment_no = #{paymentNo}
 	</select>
-	<!-- 상품을 주문했던 목록 전체 삭제 -->
-	<delete id="deleteOrdersListByGoods">
-		delete 
-		from orders
-		where goods_no = #{goodsNo}
-	</delete>
+	
 </mapper>

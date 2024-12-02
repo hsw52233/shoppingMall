@@ -15,7 +15,5 @@ public interface OrdersMapper {
 	
 	public List<Map<String,Object>> selectOrderListByPayment(int paymentNo);
 
-	public int deleteOrdersListByGoods(int goodsNo);
-	
 	public int getTotalRowByCustomer(String customerMail);
 }

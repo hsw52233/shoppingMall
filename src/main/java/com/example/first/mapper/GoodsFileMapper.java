@@ -11,10 +11,6 @@ public interface GoodsFileMapper {
 
 	int insertGoodsFile(GoodsFile goodsFile);
 
-
-	int deleteGoodsFileByGoods(int goodsNo);
-
-
 	List<GoodsFile> selectGoodsFileListByGoods(int goodsNo);
 
 }
