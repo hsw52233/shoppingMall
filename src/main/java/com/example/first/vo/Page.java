@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Page {
 	private Integer currentPage = 1;
-	private Integer rowPerPage = 10;
+	private Integer rowPerPage = 8;
 	private Integer numPerPage = 10;
 	
 	public int getBeginRow() {
@@ -18,6 +18,7 @@ public class Page {
 	public int getEndPage() {
 		return this.getStartPage()+(this.numPerPage-1);
 	}
+	
 	public int getLastPage(int totalRow) {
 		int lastPage = totalRow / this.rowPerPage;
 		if (totalRow % this.rowPerPage != 0) {

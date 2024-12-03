@@ -19,7 +19,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("staff") == null) {
+		if(session.getAttribute("loginStaff") == null) {
 			log.debug("관리자 로그인 실패 - 리다이렉트");
 			response.sendRedirect(request.getContextPath()+"/staff/login");
 			return false;

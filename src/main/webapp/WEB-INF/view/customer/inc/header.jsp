@@ -11,6 +11,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<header class="bg-dark text-white py-3">
+    <div class="container d-flex justify-content-between">
+        <h1 class="h4">마이페이지</h1>
+        <div class="d-flex align-items-center">
+            <span class="me-3">안녕하세요, 회원님!</span>
+        </div>
+    </div>
+</header>
 </body>
 </html>
