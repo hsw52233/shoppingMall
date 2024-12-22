@@ -28,7 +28,7 @@
 	<select id="getCustomerOne" parameterType="String" resultType="com.example.first.vo.Customer">
     SELECT
         a.address_no addressNo,
-        a.customer_mail customerMail,
+        c.customer_mail customerMail,
         a.address_detail addressDetail,
         a.update_date AS addressUpdateDate,
         a.create_date AS addressCreateDate,
@@ -38,7 +38,7 @@
         c.update_date AS customerUpdateDate,
         c.create_date AS customerCreateDate
     FROM Address a
-    JOIN Customer c ON a.customer_mail = c.customer_mail
+    RIGHT JOIN Customer c ON a.customer_mail = c.customer_mail
     WHERE c.customer_mail = #{customerMail}
     LIMIT 1; <!-- 여기서 LIMIT 1로 하나만 반환하도록 수정 -->
 </select>
@@ -71,14 +71,14 @@
 	
 	
 	<!-- /common/register -->
-	<select id="insertCustomer" parameterType="com.example.first.vo.Customer">
+	<insert id="insertCustomer" parameterType="com.example.first.vo.Customer">
 		INSERT INTO customer(
 			customer_mail, customer_pw, customer_birth, customer_gender
 			) VALUES (
 			#{customerMail}, #{customerPw}, #{customerBirth},#{customerGender}
 			)
 
-	</select>
+	</insert>
 	<!-- 
 	INSERT INTO customer = customer라는 db안에 집어넣음
 	(customer_mail, customer_pw, customer_birth, customer_gender) = customer라는 db안에 넣을 column 

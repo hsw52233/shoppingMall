@@ -48,7 +48,6 @@ public class CustomerController {
 	@Autowired
 	CategoryService categoryService;
 	
-	
 	@GetMapping("/staff/paymentComplete")
 	public String paymentComplete(@RequestParam String customerMail, @RequestParam int paymentNo) {
 		String paymentState = "결제완료";
@@ -134,7 +133,7 @@ public class CustomerController {
 		
 
 		// 2. customerService/addCustomer를 호출해준다
-		int row = customerService.addCustomer(registerCustomer);
+		Integer row = customerService.addCustomer(registerCustomer);
 		if(row == 1) {
 			model.addAttribute("msg","회원가입 성공");
 			return "common/login";
