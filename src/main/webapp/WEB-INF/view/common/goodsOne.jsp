@@ -175,8 +175,10 @@
 	<script>
         $('#btnAddCart').click(function() {
         	let customerMail = '${sessionScope.customerMail}';
+        	let login = '${pageContext.request.contextPath}/common/login'
         	if(!customerMail){
         		alert('로그인 후 이용해주세요');
+        		location.href = login;
         	} else if($('#cartAmount').val() == ''){
         		alert('수량을 입력해주세요');
         	} else {

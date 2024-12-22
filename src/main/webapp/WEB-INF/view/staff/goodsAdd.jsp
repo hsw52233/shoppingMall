@@ -155,6 +155,9 @@
 <div class="my-4"></div> <!-- 추가: 수직 여백 -->
 
 <div class="mb-3 d-flex justify-content-between align-items-center">
+	<div>
+   	<input type="file" name="goodsFile" class="form-control goodsFile mb-2">
+	</div>
     <div id="fileDiv" class="d-flex gap-2">
         <button type="button" id="btnAddFile" class="btn btn-primary">파일 추가</button>
         <button type="button" id="btnRemoveFile" class="btn btn-primary">파일 삭제</button>
