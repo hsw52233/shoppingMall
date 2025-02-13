@@ -36,8 +36,7 @@
 			goods_price goodsPrice,
 			goods_state goodsState,
 			update_date updateDate,
-			create_date createDate,
-			category_no categoryNo
+			create_date createDate
 			
 		FROM goods
 		WHERE goods_no = #{goodsNo}
@@ -52,10 +51,9 @@
     </selectKey>
 
     INSERT INTO goods (goods_title, goods_memo, goods_price, goods_state, category_no)
-    SELECT #{goodsTitle}, #{goodsMemo}, #{goodsPrice}, #{goodsState}, c.category_no
-    FROM category c
-    WHERE c.category_no = #{category_no}
+    VALUES (#{goodsTitle}, #{goodsMemo}, #{goodsPrice}, #{goodsState}, #{categoryNo})
 </insert>
+
 
 
 	<!-- 하상우 ) 관리자 상품 리스트 조회 -->
