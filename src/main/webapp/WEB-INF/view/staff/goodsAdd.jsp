@@ -90,9 +90,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/staff/goodsList">상품 리스트</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/staff/goodsCategoryList">상품 카테고리 리스트</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/staff/categoryList">카테고리 리스트</a>
                     </li>
