@@ -29,8 +29,7 @@
 		    (c.cart_amount * g.goods_price) totalPrice
 		from cart c 
 		inner join goods g on c.goods_no = g.goods_no
-		inner join goods_category gc on gc.goods_no = g.goods_no
-		inner join category ca on gc.category_no = ca.category_no
+		inner join category ca on g.category_no = ca.category_no
 		left join (select 
 						goods_no, min(goods_file_name) goods_file_name, min(goods_file_ext) goods_file_ext
 					from goods_file
