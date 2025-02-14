@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Styles -->
     <style>
-        body {
+        body { 
             font-family: 'Arial', sans-serif;
         }
         .sidebar {
@@ -114,7 +114,8 @@
                     <td>goodsState</td>
                     <td>updateDate</td>
                     <td>createDate</td>    
-                    <td>상품 수정</td>    
+                    <td>상품 수정</td> 
+                    <td>상품 삭제</td>   
                 </tr>
                 <c:forEach var="s" items="${goodsList}">
                     <tr>
@@ -131,6 +132,7 @@
                         <td>${s.updateDate}</td>
                         <td>${s.createDate}</td>
                         <td><a href="${pageContext.request.contextPath}/staff/goodsModify?goodsNo=${s.goodsNo}" class="btn btn-outline-primary">상품 수정</a></td>
+                        <td><a href="${pageContext.request.contextPath}/staff/removegoods?goodsNo=${s.goodsNo}" class="btn btn-outline-primary">상품 삭제</a></td>
                     </tr>
                 </c:forEach>
             </table>
