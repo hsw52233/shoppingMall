@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.first.mapper.GoodsMapper">
 
+
+	<delete id= "removeGoodsFile" parameterType="int">
+	
+		DELETE FROM goods_file WHERE goods_no = #{goodsNo}
+	</delete>
+	
+	
+	<delete id="removeGoods" parameterType="int">
+	
+		 
+		DELETE FROM goods WHERE goods_no = #{goodsNo}
+	
+	</delete>
+
 	<select id="selectStaffCount"
 			resultType="int">
 		SELECT COUNT(*) FROM staff
@@ -82,7 +96,7 @@
 		    g.goods_memo goodsMemo,
 		    g.goods_price goodsPrice,
 		    g.goods_state goodsState,
-		    c.category_title categoryTitle
+		    c.category_title categoryTitle,
 		    g.category_no categoryNo
 		from goods g
 		inner join category c on g.category_no = c.category_no
