@@ -59,7 +59,7 @@ public class GoodsService {
 	public void goodsAdd(GoodsForm goodsForm, String path) {
 		// goodsForm 데이터 -> goods 로 이동
 		Goods goods = new Goods();
-		goods.setGoodsNo(goodsForm.getGoodsNo());
+		goods.setCategoryNo(goodsForm.getCategoryNo());
 		goods.setGoodsTitle(goodsForm.getGoodsTitle());
 		goods.setGoodsMemo(goodsForm.getGoodsMemo());
 		goods.setGoodsPrice(goodsForm.getGoodsPrice());
@@ -67,12 +67,6 @@ public class GoodsService {
 		int goodsRow = goodsMapper.goodsAdd(goods);
 		int goodsNo = goods.getGoodsNo();
 		log.debug("goodsNo : " + goodsNo);
-		// goodsForm 데이터 에서 categoryNo 받아오기
-		GoodsCategory goodsCategory = new GoodsCategory();
-		goodsCategory.setGoodsNo(goodsNo);
-		goodsCategory.setCategoryNo(goodsForm.getCategoryNo());
-		// goodsCateogry 추가
-		goodsCategoryMapper.insertGoodsCategory(goodsCategory);
 		if (goodsRow == 1 && goodsForm.getGoodsFile() != null) {
 			List<MultipartFile> list = goodsForm.getGoodsFile();
 			for (MultipartFile file : list) {
