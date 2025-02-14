@@ -27,17 +27,19 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 @Service
 public class GoodsService {
-
+ 
 	@Autowired
 	private GoodsMapper goodsMapper;
 
 	@Autowired
 	private GoodsFileMapper goodsFileMapper;
-
-	@Autowired
-	private GoodsCategoryMapper goodsCategoryMapper;
 	
-
+	
+	
+	public void removeGoods(int goodsNo) {
+        goodsMapper.removeGoodsFile(goodsNo); 
+        goodsMapper.removeGoods(goodsNo); 
+    }
 	// 하상우) 재고 활성화
 
 	public int goodsModifyActive(Goods goods) {
