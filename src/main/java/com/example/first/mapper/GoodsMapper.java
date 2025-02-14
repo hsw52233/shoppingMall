@@ -9,9 +9,11 @@ import com.example.first.vo.Goods;
 
 @Mapper
 public interface GoodsMapper {
+	 
 	
+	int removeGoodsFile(int goodsNo);
 	
-	
+	int removeGoods(int goodsNo);
 	
 	int selectStaffCount();
 	
