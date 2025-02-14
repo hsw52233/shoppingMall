@@ -25,15 +25,27 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class GoodsController {
+	 
+	@Autowired
+	private GoodsCategoryService goodsCategoryService;
 
 	@Autowired
 	private GoodsService goodsService;
 	@Autowired
-	private GoodsCategoryService goodsCategoryService;
-	@Autowired
 	private BoardService boardService;
 	@Autowired
 	private GoodsFileService goodsFileService;
+	
+	
+	// 하상우) 상품 삭제
+	@GetMapping("staff/removegoods")
+	public String removeGoods(@RequestParam int goodsNo) {
+		goodsService.removeGoods(goodsNo);
+		
+		
+		return "redirect:/staff/goodsList";
+	}
+	
 	
 	
 	// 하상우) 재고 활성화
